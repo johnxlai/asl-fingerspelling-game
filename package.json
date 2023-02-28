@@ -1,0 +1,33 @@
+{
+  "name": "asl-fingerspelling-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnxlai/asl-fingerspelling-game.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+  "bcrypt": "^5.1.0",
+  "connect-session-sequelize": "^7.1.5",
+  "dotenv": "^16.0.3",
+  "express": "^4.18.1",
+  "express-handlebars": "^6.0.7",
+  "express-session": "^1.17.3",
+  "mysql": "^2.18.1",
+  "mysql2": "^3.1.2",
+  "sequelize": "^6.29.0",
+  "stack": "^0.1.0"
+ },
+  "bugs": {
+    "url": "https://github.com/johnxlai/asl-fingerspelling-game/issues"
+  },
+  "homepage": "https://github.com/johnxlai/asl-fingerspelling-game#readme"
+}
