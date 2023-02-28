@@ -12,9 +12,7 @@ Result.init(
         primaryKey: true,
         allowNull: false,
         autoIncrement: true
-      },
-
-
+    },
       user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -37,4 +35,4 @@ Result.init(
   }
 );
 
-module.exports = Comment;
+module.exports = Result;
