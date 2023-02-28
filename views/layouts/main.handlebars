@@ -7,20 +7,21 @@
   <title>ASL Fingerspelling Game</title>
   {{!-- <link rel="stylesheet" type="text/css" href="/css/style.css"> --}}
   {{!-- Cdb tailwind for now --}}
+  <link rel="stylesheet" type="text/css" href="/css/jass.css">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-  <header>
+<body class="flex flex-col vh-100 bg-slate-900 ">
+  <header class="d-flex justify-between">
     <h1 class="text-red-700">Finger spelling game</h1>
+    <nav class="text-white flex gap-3">
+      <a href="/">Home</a>
+      <a href="/">Login</a>
+      <a href="/">Highscore</a>
+    </nav>
   </header>
-  <nav>
-    <a href="/">Home</a>
-  </nav>
+
   <main>
-    <aside>
-      <h2>Finger</h2>
-    </aside>
     <div class="">
       {{{body}}}
     </div>
