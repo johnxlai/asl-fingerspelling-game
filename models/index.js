@@ -1,9 +1,6 @@
 const User = require('./User');
 const Result = require('./Result');
 
-
-
-//create associations
 User.hasMany(Result, {
     foreignKey: 'user_id'
 });
@@ -13,4 +10,4 @@ Result.belongsTo(User, {
 });
   
 
-module.exports = {User, Post, Comment};
+module.exports = {User, Result};
