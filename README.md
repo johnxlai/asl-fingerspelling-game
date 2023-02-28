@@ -1,3 +1,1 @@
 # asl-game
-
-test
