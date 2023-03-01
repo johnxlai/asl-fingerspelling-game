@@ -18,18 +18,16 @@
 <body class="flex flex-col h-screen bg-neutral-900">
   <header class="flex justify-between p-5">
     {{!-- <h1 class="text-slate-200">Finger Spell</h1> --}}
-    <img class="max-w-[100%] w-[180px]" src="/image/fingerspell-logo.svg" alt="The Finger Spell Game">
+    <a href="/"><img class="max-w-[100%] w-[180px]" src="/image/fingerspell-logo.svg" alt="The Finger Spell Game"></a>
     <nav class="text-slate-200 flex items-center gap-3">
-      <a href="/">Play</a>
+      <a href="/start">Play</a>
       <a href="/">Login</a>
       <a href="/">Highscore</a>
     </nav>
   </header>
 
   <main class="p-5 grow bg-neutral-800 flex justify-center items-center">
-    <div class="">
       {{{body}}}
-    </div>
   </main>
   <!-- If the user is logged in, load the JS script for when they logout -->
   {{!-- {{#if loggedIn}}

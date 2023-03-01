@@ -10,4 +10,13 @@ router.get('/', async (req, res) => {
   }
 });
 
+//Get Router for Start Game page
+router.get('/start', async (req, res) => {
+  try {
+    res.render('start', {});
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
