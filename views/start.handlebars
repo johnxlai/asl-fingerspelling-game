@@ -1,5 +1,6 @@
 <section class="flex flex-col w-11/12 lg:10/12 text-white">
   <div class="user-info mb-8">
+
     <h1>Have Fun {{ username }} - Current point: 100</h1>
   </div>
   <div class="main-game mb-4 w-full bg-sky-500/[.06] p-10 rounded-lg">
@@ -14,7 +15,12 @@
       </div>
       <div class="flex justify-between">
         <div class="timer">Time Left: 5</div>
-        <div class="input">User Input</div>
+        <div class="input">User Input
+          <form id="answer-input" class="text-black">
+            <label for="answer" class="text-white">User Input:</label><br>
+            <input type="text" id="answer" class="answer" name="answer"><br>
+          </form>
+        </div>
       </div>
   </div>
   <div class="rank grid grid-cols-3 gap-4">
@@ -25,4 +31,4 @@
   </div>
 </section>
 
-<script src="/js/test.js"></script>
+<script src="/js/start.js"></script>
