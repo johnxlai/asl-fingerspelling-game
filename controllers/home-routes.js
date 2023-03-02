@@ -46,4 +46,3 @@ router.get('/ranks', async (req, res) => {
 });
 
 module.exports = router;
-å;
