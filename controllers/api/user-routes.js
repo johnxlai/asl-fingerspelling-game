@@ -8,8 +8,7 @@ function addUser(request, response) {
     .then((data) => {
       const session = request.session;
       session.save(() => {
-        session.user_id = data.id;
-        session.username = data.username;
+        session.user = data;
         session.loggedIn = true;
 
         response.json(data);
