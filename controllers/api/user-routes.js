@@ -42,8 +42,11 @@ function login(request, response) {
       session.save(() => {
         session.user = data;
         session.loggedIn = true;
-
-        response.json({ user: data, message: 'You are logged in!' });
+        response.render('profile', {
+          user: data,
+          message: 'You are logged in!',
+        });
+        // response.json({ user: data, message: 'You are logged in!' });
       });
     }
   });
