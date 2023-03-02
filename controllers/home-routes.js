@@ -43,6 +43,7 @@ router.get('/ranks', async (req, res) => {
   const user = usersData.map((user) => user.get({ plain: true }));
 
   console.log(user);
+  res.render('ranks', {});
 });
 
 module.exports = router;
