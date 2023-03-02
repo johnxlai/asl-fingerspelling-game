@@ -17,14 +17,17 @@ router.get('/', async (req, res) => {
 //Get Router for Start Game page
 router.get('/start', async (req, res) => {
   // try {
-  const userData = await User.findAll();
 
-  const gamer = userData.map((user) => user.get({ plain: true }));
+  // if (req.session.user) {
+  //   const userData = await User.findByPk(req.session.user.id, {
+  //     attributes: { exclude: ['password'] },
+  //     include: [{ model: Result, attributes: ['points'] }],
+  //   });
+  //   const user = userData.get({ plain: true });
 
-  res.render('start', {
-    userData,
-    loggedIn: req.session.loggedIn,
-  });
+  //   res.render('start', { ...user, loggedIn: req.session.loggedIn });
+  // }
+  res.render('start', { loggedIn: req.session.loggedIn });
 
   // } catch (err) {
   // res.status(500).json(err);
