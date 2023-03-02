@@ -3,7 +3,7 @@ const { User } = require('../models');
 //Get router for home page
 router.get('/', async (req, res) => {
   try {
-    res.render('homepage', {});
+    res.render('homepage', {loggedIn: req.session.loggedIn, user: req.session.user});
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -19,7 +19,6 @@ router.get('/start', async (req, res) => {
 
   // const user = userData.get({ plain: true });
 
-  console.log(userData);
 
   // Get all projects and JOIN with user data
   // const projectData = await Project.findAll({
