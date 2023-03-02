@@ -2,5 +2,9 @@
   <p>User id{{id}}</p>
   <p>Username {{username}} </p>
   <p>User Level {{level}}</p>
-  <p>Total Points {{result.points}}</p>
+    {{#each results as |result|}}
+      <p>Total Points
+      {{result.points}}
+      </p>
+    {{/each}}
 </div>
