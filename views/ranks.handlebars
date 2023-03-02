@@ -4,9 +4,9 @@
   </div>
   <div class="col-span-full bg-sky-500/[.06] p-3 rounded-lg text-white">
     <div class="grid grid-cols-3 gap-4">
-      <div class="p-4 rounded-lg shadow-lg bg-pink-500">01</div>
-      <div class="p-4 rounded-lg shadow-lg bg-pink-500">02</div>
-      <div class="p-4 rounded-lg shadow-lg bg-pink-500">03</div>
+      {{#each users as |user|}}
+        {{> rank-details}}
+      {{/each}}
     </div>
   </div>
 </section>

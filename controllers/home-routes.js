@@ -13,7 +13,9 @@ router.get('/', async (req, res) => {
 //Get Router for Start Game page
 router.get('/start', async (req, res) => {
   // try {
-  const userData = await User.findAll();
+  const userData = await User.findAll({
+    attributes: { exclude: ['password'] },
+  });
 
   const gamer = userData.map((user) => user.get({ plain: true }));
 
@@ -39,11 +41,11 @@ router.get('/start', async (req, res) => {
 });
 
 router.get('/ranks', async (req, res) => {
-  const usersData = await User.findAll();
-  const user = usersData.map((user) => user.get({ plain: true }));
+  const usersData = await User.findAll({});
+  const users = usersData.map((user) => user.get({ plain: true }));
 
-  console.log(user);
-  res.render('ranks', {});
+  console.log(users);
+  res.render('ranks', { users });
 });
 
 module.exports = router;
