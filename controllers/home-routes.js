@@ -23,6 +23,7 @@ router.get('/start', async (req, res) => {
 
   res.render('start', {
     userData,
+    loggedIn: req.session.loggedIn,
   });
 
   // } catch (err) {
@@ -40,7 +41,7 @@ router.get('/ranks', async (req, res) => {
 
     //loop thru all users and display user
     const users = usersData.map((user) => user.get({ plain: true }));
-    res.render('ranks', { users });
+    res.render('ranks', { users, loggedIn: req.session.loggedIn });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -56,7 +57,7 @@ router.get('/profile', async (req, res) => {
       });
       const user = userData.get({ plain: true });
 
-      res.render('profile', { ...user });
+      res.render('profile', { ...user, loggedIn: req.session.loggedIn });
     } else {
       res.render('login');
     }
