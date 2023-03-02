@@ -1,10 +1,9 @@
 const inputForm = document.getElementById('answer-input');
-console.log(inputForm);
 
 function getAnswer(e) {
-  const inputAnswer = document.querySelector('.answer-input');
   e.preventDefault();
-  console.log('test');
+  let answer = inputForm.getElementsByClassName('answer')[0].value;
+  console.log(answer);
 }
 
 inputForm.addEventListener('submit', getAnswer);
