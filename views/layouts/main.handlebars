@@ -24,6 +24,15 @@
       <a href="/api/users/login">Login</a>
       <a href="/api/users/create">Signup</a>
       <a href="/ranks">Ranks</a>
+
+      {{#if loggedIn}}
+         <a href="/api/users/logout">Logout</a>
+      {{else}}
+          <a href="/api/users/login">Login</a>
+          <a href="/api/users/create">Signup</a>
+      {{/if}}
+      <a href="/">Highscore</a>
+
     </nav>
   </header>
 
