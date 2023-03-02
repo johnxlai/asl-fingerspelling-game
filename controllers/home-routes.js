@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { response } = require('express');
 const { User, Result } = require('../models');
 //Get router for home page
 router.get('/', async (req, res) => {
@@ -53,16 +54,20 @@ router.get('/ranks', async (req, res) => {
 
 // Profile page (with Auth)
 router.get('/profile', async (req, res) => {
-  try {
-    const userData = await User.findByPk(req.session, {
+  if (req.session.user) {
+    const userData = await User.findByPk(req.session.user.id, {
       attributes: { exclude: ['password'] },
       include: [{ model: Result, attributes: ['points'] }],
     });
-
     const user = userData.get({ plain: true });
+
+    console.log(req.session.user.id);
+    console.log(req.session.user.username);
     res.render('profile', { ...user });
-  } catch (err) {
-    res.status(500).json(err);
+  } else {
+    res.render('login');
   }
+
+  // res.status(500).json(err);
 });
 module.exports = router;

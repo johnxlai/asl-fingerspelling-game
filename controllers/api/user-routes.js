@@ -8,8 +8,7 @@ function addUser(request, response) {
     .then((data) => {
       const session = request.session;
       session.save(() => {
-        session.user_id = data.id;
-        session.username = data.username;
+        session.user = data;
         session.loggedIn = true;
 
         response.json(data);
@@ -23,7 +22,7 @@ function addUser(request, response) {
 }
 
 function getLoginPage(request, response) {
-  response.render('login', {loggedIn: request.session.loggedIn});
+  response.render('login', { loggedIn: request.session.loggedIn });
 }
 
 function login(request, response) {
@@ -54,14 +53,14 @@ function getSignUpPage(request, response) {
   response.render('signup');
 }
 
-function logout (request, response) {
-    const session = request.session
-    if (session.loggedIn) {
-        session.destroy(() => console.log('Session was deleted'));
-        response.redirect('/')
-    } else {
-        res.status(404).end();
-    }
+function logout(request, response) {
+  const session = request.session;
+  if (session.loggedIn) {
+    session.destroy(() => console.log('Session was deleted'));
+    response.redirect('/');
+  } else {
+    res.status(404).end();
+  }
 }
 
 // Routes
