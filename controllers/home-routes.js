@@ -13,13 +13,11 @@ router.get('/', async (req, res) => {
 //Get Router for Start Game page
 router.get('/start', async (req, res) => {
   // try {
-  const userData = await User.findAll({
-    attributes: ['username'],
-  });
+  const userData = await User.findAll();
 
-  // const user = userData.get({ plain: true });
+  const gamer = (userData = userData.map((user) => user.get({ plain: true })));
 
-  console.log(userData);
+  console.log(gamer);
 
   // Get all projects and JOIN with user data
   // const projectData = await Project.findAll({
