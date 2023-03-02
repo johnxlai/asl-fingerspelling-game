@@ -13,6 +13,7 @@ const app = express();
 const PORT = process.env.PORT || 3002;
 const hbs = exphbs.create();
 
+
 app.use(session);
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
