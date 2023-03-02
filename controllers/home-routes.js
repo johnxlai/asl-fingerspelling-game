@@ -40,6 +40,7 @@ router.get('/start', async (req, res) => {
 
 router.get('/ranks', async (req, res) => {
   const usersData = await User.findAll({
+    attributes: { exclude: ['password'] },
     include: [{ model: Result, attributes: ['points'] }],
   });
   const users = usersData.map((user) => user.get({ plain: true }));
