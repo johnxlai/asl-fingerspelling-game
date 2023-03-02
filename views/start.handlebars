@@ -1,0 +1,32 @@
+<section class="flex flex-col w-11/12 lg:10/12 text-white">
+  <div class="user-info mb-8">
+
+    <h1>Have Fun {{ username }} - Current point: 100</h1>
+  </div>
+  <div class="main-game mb-4 w-full bg-sky-500/[.06] p-10 rounded-lg">
+      <div class="level">
+        <h2>Level 1</h2>
+      </div>
+      <div class="question-frame grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <img src="/image/alphabet/l.svg" alt="letter l">
+        <img src="/image/alphabet/o.svg" alt="letter o">
+        <img src="/image/alphabet/v.svg" alt="letter v">
+        <img src="/image/alphabet/e.svg" alt="letter e">
+      </div>
+      <div class="flex justify-between">
+        <div class="timer">Time Left: 5</div>
+          <form id="answer-input" class="text-black">
+            <label for="answer" class="text-white">User Input:</label>
+            <input type="text" id="answer" class="answer" name="answer">
+          </form>
+      </div>
+  </div>
+  <div class="rank grid grid-cols-3 gap-4">
+    <div class="col-span-full bg-sky-500/[.06] p-3 rounded-lg"><h3>Rank</h3></div>
+    <div class="p-4 rounded-lg shadow-lg bg-pink-500">01</div>
+    <div class="p-4 rounded-lg shadow-lg bg-pink-500">02</div>
+    <div class="p-4 rounded-lg shadow-lg bg-pink-500">03</div>
+  </div>
+</section>
+
+<script src="/js/start.js"></script>
