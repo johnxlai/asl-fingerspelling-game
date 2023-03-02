@@ -42,32 +42,36 @@ router.get('/start', async (req, res) => {
 
 //Ranking and highscore page
 router.get('/ranks', async (req, res) => {
-  const usersData = await User.findAll({
-    attributes: { exclude: ['password'] },
-    include: [{ model: Result, attributes: ['points'] }],
-  });
-  const users = usersData.map((user) => user.get({ plain: true }));
+  try {
+    const usersData = await User.findAll({
+      attributes: { exclude: ['password'] },
+      include: [{ model: Result, attributes: ['points'] }],
+    });
 
-  console.log(users);
-  res.render('ranks', { users });
+    //loop thru all users and display user
+    const users = usersData.map((user) => user.get({ plain: true }));
+    res.render('ranks', { users });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 // Profile page (with Auth)
 router.get('/profile', async (req, res) => {
-  if (req.session.user) {
-    const userData = await User.findByPk(req.session.user.id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Result, attributes: ['points'] }],
-    });
-    const user = userData.get({ plain: true });
+  try {
+    if (req.session.user) {
+      const userData = await User.findByPk(req.session.user.id, {
+        attributes: { exclude: ['password'] },
+        include: [{ model: Result, attributes: ['points'] }],
+      });
+      const user = userData.get({ plain: true });
 
-    console.log(req.session.user.id);
-    console.log(req.session.user.username);
-    res.render('profile', { ...user });
-  } else {
-    res.render('login');
+      res.render('profile', { ...user });
+    } else {
+      res.render('login');
+    }
+  } catch (err) {
+    res.status(500).json(err);
   }
-
-  // res.status(500).json(err);
 });
 module.exports = router;
