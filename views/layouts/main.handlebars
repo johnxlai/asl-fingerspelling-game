@@ -18,9 +18,13 @@
 <body class="flex flex-col h-screen bg-neutral-800">
   <header class="flex justify-between p-5">
     {{!-- <h1 class="text-slate-200">Finger Spell</h1> --}}
-    <a href="/"><img class="max-w-[100%] w-[180px]" src="/image/fingerspell-logo.svg" alt="The Finger Spell Game"></a>
+    <a href="/"><img class="max-w-[100%] w-[180px]" src="/image/finger-spell-logo.svg" alt="The Finger Spell Game"></a>
     <nav class="text-slate-200 flex items-center gap-3">
       <a href="/start">Play</a>
+      <a href="/api/users/login">Login</a>
+      <a href="/api/users/create">Signup</a>
+      <a href="/ranks">Ranks</a>
+
       {{#if loggedIn}}
          <a href="/api/users/logout">Logout</a>
       {{else}}
@@ -28,6 +32,7 @@
           <a href="/api/users/create">Signup</a>
       {{/if}}
       <a href="/">Highscore</a>
+
     </nav>
   </header>
 

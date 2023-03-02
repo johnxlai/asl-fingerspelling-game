@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User, Result } = require('../models');
 //Get router for home page
 router.get('/', async (req, res) => {
   try {
@@ -13,12 +13,9 @@ router.get('/', async (req, res) => {
 //Get Router for Start Game page
 router.get('/start', async (req, res) => {
   // try {
-  const userData = await User.findAll({
-    attributes: ['username'],
-  });
+  const userData = await User.findAll();
 
-  // const user = userData.get({ plain: true });
-
+  const gamer = userData.map((user) => user.get({ plain: true }));
 
   // Get all projects and JOIN with user data
   // const projectData = await Project.findAll({
@@ -37,6 +34,17 @@ router.get('/start', async (req, res) => {
   // } catch (err) {
   // res.status(500).json(err);
   // }
+});
+
+router.get('/ranks', async (req, res) => {
+  const usersData = await User.findAll({
+    attributes: { exclude: ['password'] },
+    include: [{ model: Result, attributes: ['points'] }],
+  });
+  const users = usersData.map((user) => user.get({ plain: true }));
+
+  console.log(users);
+  res.render('ranks', { users });
 });
 
 module.exports = router;
