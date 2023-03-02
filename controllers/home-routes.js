@@ -21,16 +21,6 @@ router.get('/start', async (req, res) => {
 
   const gamer = userData.map((user) => user.get({ plain: true }));
 
-  // Get all projects and JOIN with user data
-  // const projectData = await Project.findAll({
-  //   include: [
-  //     {
-  //       model: User,
-  //       attributes: ['name'],
-  //     },
-  //   ],
-  // });
-
   res.render('start', {
     userData,
   });
