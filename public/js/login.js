@@ -29,7 +29,7 @@ async function loginFormHandler(event) {
       alert(response.statusText);
     }
   }
-}
+
 
 document
   .getElementById('loginbtn')
