@@ -1,13 +1,7 @@
 <section class="flex flex-col w-11/12 lg:w-10/12 text-white">
   <div class="user-info mb-8">
-<<<<<<< Updated upstream
-    {{#if loggedIn}}
-      <h1>Have Fun {{ username }} - Current point: 100</h1>
-    {{/if}}
-=======
-    <h1>Have Fun {{ username }} - Current point: <span id="score"></span></h1> 
-    <p>Level: <span id="level-display"></span></p>
->>>>>>> Stashed changes
+    <div id="points-display">Points: 0</div> 
+    
   </div>
   <div class="main-game mb-4 w-full bg-sky-500/[.06] p-10 rounded-lg">
     <div class="question-frame grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
@@ -17,6 +11,9 @@
       <img id="image-3" src="" alt="letter 3">
     </div>
     <div id="feedback"></div>
+
+
+
 
     <div class="flex justify-between">
       
@@ -30,6 +27,5 @@
   </div>
 </section>
 
-
-    <script src="./js/start.js"></script>
+<script src="/js/start.js"></script>
 
