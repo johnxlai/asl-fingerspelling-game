@@ -4,6 +4,8 @@ const answerInput = document.getElementById('answer-input');
 const pointsDisplay = document.getElementById('points-display');
 const levelDisplay = document.getElementById('level-display');
 
+const startGameBtn = document.querySelector('.start-game');
+
 // Define an object that maps each letter of the alphabet to an image filename
 const letterImages = {
   a: 'image/alphabet/a.svg',
@@ -65,12 +67,13 @@ function displayWord(word) {
   levelDisplay.textContent = words[currentWordIndex].level;
 }
 
-// Display the first word
-displayWord(words[currentWordIndex].word);
+function startGame() {
+  // Display the first word
+  displayWord(words[currentWordIndex].word);
+}
 
-// Add an event listener to the form submit button
-
-gameForm.addEventListener('submit', (event) => {
+//Check the answer
+function checkGuess(event) {
   event.preventDefault();
   // Get the user input value
   let userInput = answerInput.value.trim().toLowerCase();
@@ -131,4 +134,8 @@ gameForm.addEventListener('submit', (event) => {
 
   // Clear the user input field
   answerInput.value = '';
-});
+}
+
+//ADDEVENTLISTENER
+startGameBtn.addEventListener('click', startGame);
+gameForm.addEventListener('submit', checkGuess);
