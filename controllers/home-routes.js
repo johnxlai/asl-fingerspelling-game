@@ -1,4 +1,5 @@
 const router = require('express').Router();
+//Add sequelize to use sum method
 const sequelize = require('../config/connection');
 
 const { response } = require('express');
