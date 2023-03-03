@@ -1,6 +1,8 @@
 //Selectors
 const gameForm = document.getElementById('game-form');
 const answerInput = document.getElementById('answer-input');
+const pointsDisplay = document.getElementById('points-display');
+const levelDisplay = document.getElementById('level-display');
 
 // Define an object that maps each letter of the alphabet to an image filename
 const letterImages = {
@@ -60,7 +62,6 @@ function displayWord(word) {
   }
 
   // Update the level display
-  const levelDisplay = document.getElementById('level-display');
   levelDisplay.textContent = words[currentWordIndex].level;
 }
 
@@ -106,7 +107,6 @@ gameForm.addEventListener('submit', (event) => {
       }
 
       // Update the points display
-      const pointsDisplay = document.getElementById('points-display');
       pointsDisplay.textContent = parseInt(pointsDisplay.textContent) + 1;
 
       // Clear the feedback message
