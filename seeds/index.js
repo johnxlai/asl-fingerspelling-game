@@ -6,13 +6,12 @@ const superUser = require('./superUsersSeeds');
 const sequelize = require('../config/connection');
 
 const seedAll = async () => {
-  //Creating a superUser
-  await superUser();
-
   await sequelize.sync({ force: true });
   await User.bulkCreate(userData);
-
   await Result.bulkCreate(resultData);
+
+  //Creating a superUser
+  await superUser();
 
   process.exit(0);
 };
