@@ -29,24 +29,15 @@ User.init(
           validate: {
             len: [4]
           }
-        },
-
-        level: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            defaultValue: 1
-        },
-        
+        }, 
         image: {
           type: DataTypes.STRING,
           defaultValue: '/image/user/userDefault.png'
-        }
-      },
-    },
-    level: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 1,
+        },
+        level: {
+           type: DataTypes.INTEGER,
+          allowNull: false,
+         defaultValue: 1,
     },
     superuser: {
       type: DataTypes.BOOLEAN,
