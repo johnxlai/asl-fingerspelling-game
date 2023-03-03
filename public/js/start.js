@@ -71,9 +71,8 @@ displayWord(words[currentWordIndex].word);
 
 gameForm.addEventListener('submit', (event) => {
   event.preventDefault();
-
   // Get the user input value
-  const userInput = document.getElementById('input').value.trim().toLowerCase();
+  let userInput = answerInput.value.trim().toLowerCase();
 
   // Check if the user input matches the current word
   if (userInput === words[currentWordIndex].word.toLowerCase()) {
