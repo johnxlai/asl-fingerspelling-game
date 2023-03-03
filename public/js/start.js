@@ -50,9 +50,6 @@ const words = [
 // Define a variable to keep track of the current word index
 let currentWordIndex = 0;
 
-// Define a variable to keep track of the highest level completed
-let highestLevelCompleted = 1;
-
 // Function to display a word and its letters
 function displayWord(word) {
   // Split the word into an array of letters
@@ -99,33 +96,15 @@ function checkGuess(event) {
       endGame();
     }
 
-    // Check if the current level is unlocked
-    if (words[currentWordIndex].level <= highestLevelCompleted + 1) {
-      // Display the next word
-      displayWord(words[currentWordIndex].word);
+    // Display the next word
+    displayWord(words[currentWordIndex].word);
 
-      // Check if the current word is in level 1 and the user's answer is correct
-      if (
-        words[currentWordIndex].level === 1 &&
-        userInput === words[currentWordIndex].word.toLowerCase()
-      ) {
-        // Unlock level 2 by setting the highestLevelCompleted variable to 1
-        highestLevelCompleted = 1;
-      }
+    // Update game point and display point
+    gamePoints += 10;
+    pointsDisplay.textContent = gamePoints;
 
-      // Update the highest level completed if necessary
-      if (words[currentWordIndex].level > highestLevelCompleted) {
-        highestLevelCompleted = words[currentWordIndex].level;
-      }
-
-      // Update the points display
-      gamePoints += 10;
-      pointsDisplay.textContent = gamePoints;
-
-      // Clear the feedback message
-
-      feedback.textContent = 'GOOD JOB YOU GOT IT RIGHT';
-    }
+    // When user is correct
+    feedback.textContent = 'GOOD JOB YOU GOT IT RIGHT';
   } else {
     // Display an error message
     feedback.textContent =
