@@ -1,24 +1,25 @@
 const router = require('express').Router();
 const { User } = require('../../models');
-
-// Controllers
+const fs = require("fs");
+const upload = require("../../middleware/upload")
 
 function addUser(request, response) {
-  User.create(request.body)
-    .then((data) => {
+   User.create(request.body)
+    .then((user) => {
       const session = request.session;
       session.save(() => {
-        session.user = data;
+
+        session.user = user;
+
+   
+
         session.loggedIn = true;
-
-        response.json(data);
-      });
+        response.json(user)
+      })
     })
-    .catch((error) => {
-      response.status(500).json(error);
-    });
-
-  console.log('User was created');
+    //.catch((error) => {
+     //  response.status(500).json(error);
+    // });
 }
 
 function getLoginPage(request, response) {
@@ -53,16 +54,29 @@ function getSignUpPage(request, response) {
   response.render('signup');
 }
 
-function logout(request, response) {
-  const session = request.session;
-  if (session.loggedIn) {
-    session.destroy(() => console.log('Session was deleted'));
-    response.redirect('/');
-  } else {
-    res.status(404).end();
-  }
+function logout (request, response) {
+    const session = request.session
+    if (session.loggedIn) {
+        session.destroy(() => console.log('Session was deleted'));
+    }
+    response.redirect('/')
 }
 
+function setImg(request, response){
+    const session = request.session
+    let filePath;
+    if(session.loggedIn){
+        filePath = `/image/user/${request.file.filename}`
+       (async () => {
+            await User.update({image: filePath}, {
+                where: {id: session.user.id}
+             });
+             request.session.user.image = filePath
+        })()
+    }
+    response.render('homepage', {loggedIn: true, user: request.session.user});
+}
+    
 // Routes
 
 router.get('/login', getLoginPage);
@@ -71,8 +85,12 @@ router.get('/logout', logout);
 
 router.post('/login', login);
 
-router.get('/create/', getSignUpPage);
+router.get('/create', getSignUpPage);
 
-router.post('/create/', addUser);
+router.post('/create', addUser);
+
+router.post('/set-img', upload.single('file'), setImg);
 
 module.exports = router;
+
+
