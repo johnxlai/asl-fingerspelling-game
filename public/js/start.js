@@ -2,10 +2,12 @@
 const gameForm = document.getElementById('game-form');
 const answerInput = document.getElementById('answer-input');
 const pointsDisplay = document.getElementById('points-display');
+
 const levelDisplay = document.getElementById('level-display');
 
 const startGameBtn = document.querySelector('.start-game');
 
+let gamePoints = 0;
 // Define an object that maps each letter of the alphabet to an image filename
 const letterImages = {
   a: 'image/alphabet/a.svg',
@@ -110,7 +112,8 @@ function checkGuess(event) {
       }
 
       // Update the points display
-      pointsDisplay.textContent = parseInt(pointsDisplay.textContent) + 1;
+      gamePoints += 10;
+      pointsDisplay.textContent = gamePoints;
 
       // Clear the feedback message
       const feedback = document.getElementById('feedback');
