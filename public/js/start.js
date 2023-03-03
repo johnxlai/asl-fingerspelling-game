@@ -75,12 +75,16 @@ function startGame() {
 }
 
 function goToNextQuestion() {
-  currentWordIndex++;
-  displayWord(words[currentWordIndex].word);
+  if (words.length - 1 === currentWordIndex) {
+    endGame();
+  } else {
+    currentWordIndex++;
+    displayWord(words[currentWordIndex].word);
+  }
 }
 //end of game
 function endGame() {
-  alert('You have completed all the words!');
+  feedback.textContent = `<h3>YOUR FINAL SCORE is ${gamePoints}</h3>`;
   console.log(`Final point ${gamePoints}`);
 }
 
@@ -91,14 +95,10 @@ function checkGuess(event) {
   let userInput = answerInput.value.trim().toLowerCase();
 
   // Check if all words have been displayed END GAME
-  if (currentWordIndex >= words.length) {
-    endGame();
-  }
 
   // Check if the user input matches the current word
-  if (userInput === words[currentWordIndex].word.toLowerCase()) {
-    // Display the next word
-
+  let correct = userInput === words[currentWordIndex].word.toLowerCase();
+  if (correct) {
     // Update game point and display point
     gamePoints += 10;
     pointsDisplay.textContent = gamePoints;
@@ -112,8 +112,7 @@ function checkGuess(event) {
     // Clear the user input field
     answerInput.value = '';
     // Display an error message
-    feedback.textContent =
-      'Incorrect. Try again. guess right to unlock next level';
+    feedback.textContent = 'Incorrect. Try again!';
     goToNextQuestion();
   }
 }
