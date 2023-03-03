@@ -19,14 +19,35 @@ router.get('/', async (req, res) => {
 
 //Get Router for Start Game page
 router.get('/start', async (req, res) => {
+  //yaro test
+  // const userData = await Result.findAll(
+  //   { where: { user_id: req.session.user.id } },
+  //   {
+  //     attributes: [
+  //       'itemId',
+  //       [sequelize.fn('sum', sequelize.col('points')), 'total_points'],
+  //     ],
+  //     order: sequelize.literal('total DESC'),
+  //   }
+  // );
+
   try {
     if (req.session.user) {
       const userData = await User.findByPk(req.session.user.id, {
         attributes: { exclude: ['password'] },
-        include: [{ model: Result, attributes: ['points'] }],
+        include: [
+          {
+            model: Result,
+            attributes: [
+              sequelize.fn('sum', sequelize.col('points')),
+              'total_points',
+            ],
+          },
+        ],
       });
       const user = userData.get({ plain: true });
 
+      console.log(user);
       res.render('start', { ...user, loggedIn: req.session.loggedIn });
       return;
     }

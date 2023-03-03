@@ -20,11 +20,11 @@ const resultData = [
     points: 5,
   },
   {
-    user_id: 4,
+    user_id: 3,
     points: 4,
   },
   {
-    user_id: 5,
+    user_id: 2,
     points: 7,
   },
 ];
