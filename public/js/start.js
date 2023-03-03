@@ -3,7 +3,8 @@ const gameForm = document.getElementById('game-form');
 const answerInput = document.getElementById('answer-input');
 const pointsDisplay = document.getElementById('points-display');
 let feedback = document.getElementById('feedback');
-const levelDisplay = document.getElementById('level-display');
+const questionNum = document.getElementById('question-num');
+const questionsFrame = document.getElementById('question-frame');
 
 const startGameBtn = document.querySelector('.start-game');
 
@@ -41,8 +42,8 @@ const letterImages = {
 // Define an array of words to use for the game, with each word assigned a level
 const words = [
   { word: 'love', level: 1 },
-  // { word: 'joke', level: 2 },
-  // { word: 'feel', level: 3 },
+  { word: 'joke', level: 2 },
+  { word: 'feel', level: 3 },
   // { word: 'Cook', level: 4 },
   // { word: 'baby', level: 5 },
 ];
@@ -61,18 +62,25 @@ function displayWord(word) {
     image.src = letterImages[letters[i].toLowerCase()];
     image.alt = 'letter ' + i;
   }
+  // Increment the current word index (go to next question)
 
   // Update the level display
-  levelDisplay.textContent = words[currentWordIndex].level;
+  // questionNum.textContent = words[currentWordIndex].level;
 }
 
 function startGame() {
   // Display the first word
+  questionsFrame.classList.remove('hidden');
   displayWord(words[currentWordIndex].word);
 }
 
+function goToNextQuestion() {
+  currentWordIndex++;
+  displayWord(words[currentWordIndex].word);
+}
 //end of game
 function endGame() {
+  alert('You have completed all the words!');
   console.log(`Final point ${gamePoints}`);
 }
 
@@ -82,37 +90,32 @@ function checkGuess(event) {
   // Get the user input value
   let userInput = answerInput.value.trim().toLowerCase();
 
+  // Check if all words have been displayed END GAME
+  if (currentWordIndex >= words.length) {
+    endGame();
+  }
+
   // Check if the user input matches the current word
   if (userInput === words[currentWordIndex].word.toLowerCase()) {
-    // Increment the current word index
-    currentWordIndex++;
-
-    // Check if all words have been displayed
-    if (currentWordIndex >= words.length) {
-      // Display a message and reset the current word index
-      alert('You have completed all the words!');
-      currentWordIndex = 0;
-      //console.log(final point of round)
-      endGame();
-    }
-
     // Display the next word
-    displayWord(words[currentWordIndex].word);
 
     // Update game point and display point
     gamePoints += 10;
     pointsDisplay.textContent = gamePoints;
 
+    // Clear the user input field
+    answerInput.value = '';
     // When user is correct
     feedback.textContent = 'GOOD JOB YOU GOT IT RIGHT';
+    goToNextQuestion();
   } else {
+    // Clear the user input field
+    answerInput.value = '';
     // Display an error message
     feedback.textContent =
       'Incorrect. Try again. guess right to unlock next level';
+    goToNextQuestion();
   }
-
-  // Clear the user input field
-  answerInput.value = '';
 }
 
 //ADDEVENTLISTENER
