@@ -18,16 +18,17 @@ router.get('/', async (req, res) => {
 router.get('/start', async (req, res) => {
   // try {
 
-  // if (req.session.user) {
-  //   const userData = await User.findByPk(req.session.user.id, {
-  //     attributes: { exclude: ['password'] },
-  //     include: [{ model: Result, attributes: ['points'] }],
-  //   });
-  //   const user = userData.get({ plain: true });
+  if (req.session.user) {
+    const userData = await User.findByPk(req.session.user.id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Result, attributes: ['points'] }],
+    });
+    const user = userData.get({ plain: true });
 
-  //   res.render('start', { ...user, loggedIn: req.session.loggedIn });
-  // }
-  res.render('start', { loggedIn: req.session.loggedIn });
+    res.render('start', { ...user, loggedIn: req.session.loggedIn });
+  } else {
+    res.render('start');
+  }
 
   // } catch (err) {
   // res.status(500).json(err);
