@@ -41,10 +41,10 @@ const letterImages = {
 // Define an array of words to use for the game, with each word assigned a level
 const words = [
   { word: 'love', level: 1 },
-  { word: 'joke', level: 2 },
-  { word: 'feel', level: 3 },
-  { word: 'Cook', level: 4 },
-  { word: 'baby', level: 5 },
+  // { word: 'joke', level: 2 },
+  // { word: 'feel', level: 3 },
+  // { word: 'Cook', level: 4 },
+  // { word: 'baby', level: 5 },
 ];
 
 // Define a variable to keep track of the current word index
@@ -74,6 +74,11 @@ function startGame() {
   displayWord(words[currentWordIndex].word);
 }
 
+//end of game
+function endGame() {
+  console.log(`Final point ${gamePoints}`);
+}
+
 //Check the answer
 function checkGuess(event) {
   event.preventDefault();
@@ -90,6 +95,8 @@ function checkGuess(event) {
       // Display a message and reset the current word index
       alert('You have completed all the words!');
       currentWordIndex = 0;
+      //console.log(final point of round)
+      endGame();
     }
 
     // Check if the current level is unlocked
