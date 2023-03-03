@@ -1,4 +1,6 @@
 const router = require('express').Router();
+const sequelize = require('../config/connection');
+
 const { response } = require('express');
 const { User, Result } = require('../models');
 //Get router for home page
@@ -54,17 +56,32 @@ router.get('/ranks', async (req, res) => {
 router.get('/profile', async (req, res) => {
   try {
     if (req.session.user) {
+      //yaro test
+      // const userData = await Result.findAll(
+      //   { where: { user_id: req.session.user.id } },
+      //   {
+      //     attributes: [
+      //       'itemId',
+      //       [sequelize.fn('sum', sequelize.col('points')), 'total_points'],
+      //     ],
+      //     order: sequelize.literal('total DESC'),
+      //   }
+      // );
+
       const userData = await User.findByPk(req.session.user.id, {
         attributes: { exclude: ['password'] },
         include: [{ model: Result, attributes: ['points'] }],
       });
+
       const user = userData.get({ plain: true });
+      console.log(user);
 
       res.render('profile', { ...user, loggedIn: req.session.loggedIn });
     } else {
       res.render('login');
     }
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
