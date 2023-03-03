@@ -1,6 +1,17 @@
 <section class="flex flex-col w-11/12 lg:w-10/12 text-white">
   <div class="user-info mb-8">
 
+
+    {{!-- 30sec
+    5 questions
+    each question u answer will give you 10 points
+    total around each round can only 50 max
+
+
+    level 1 = 50 go to next StaticRange
+    leve1 2 = 100
+    lever 3 = 150 --}}
+
     {{#if loggedIn}}
       <h1>Have Fun <span class="uppercase">{{ username }}</span></h1>
       <p>Level {{ level }}</p>
@@ -12,6 +23,10 @@
         {{/each}}
     {{/if}}
   </div>
+
+  <button class="stop-game">STOP</button>
+
+  <div>Final total point</div>
   <div class="main-game mb-4 w-full bg-sky-500/[.06] p-10 rounded-lg">
       <div class="level">
         <h2>Level 1</h2>
@@ -40,8 +55,8 @@
     <div class="p-4 rounded-lg shadow-lg bg-pink-500">02</div>
     <div class="p-4 rounded-lg shadow-lg bg-pink-500">03</div>
 
-    <div id="points-display">Points: 0</div> 
-    
+    <div id="points-display">Points: 0</div>
+
   </div>
   <div class="main-game mb-4 w-full bg-sky-500/[.06] p-10 rounded-lg">
     <div class="question-frame grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
@@ -56,12 +71,12 @@
 
 
     <div class="flex justify-between">
-      
+
       <form id="form" class="text-black">
         <label for="input" class="text-white">User Input:</label>
         <input type="text" id="input" class="answer" name="answer">
         <button type="submit" class="btn">Submit</button>
-       
+
       </form>
     </div>
 

@@ -1,25 +1,22 @@
 const router = require('express').Router();
 const { User } = require('../../models');
-const fs = require("fs");
-const upload = require("../../middleware/upload")
+const fs = require('fs');
+const upload = require('../../middleware/upload');
+const { max } = require('../../models/User');
 
 function addUser(request, response) {
-   User.create(request.body)
-    .then((user) => {
-      const session = request.session;
-      session.save(() => {
+  User.create(request.body).then((user) => {
+    const session = request.session;
+    session.save(() => {
+      session.user = user;
 
-        session.user = user;
-
-   
-
-        session.loggedIn = true;
-        response.json(user)
-      })
-    })
-    //.catch((error) => {
-     //  response.status(500).json(error);
-    // });
+      session.loggedIn = true;
+      response.json(user);
+    });
+  });
+  //.catch((error) => {
+  //  response.status(500).json(error);
+  // });
 }
 
 function getLoginPage(request, response) {
@@ -54,29 +51,31 @@ function getSignUpPage(request, response) {
   response.render('signup');
 }
 
-function logout (request, response) {
-    const session = request.session
-    if (session.loggedIn) {
-        session.destroy(() => console.log('Session was deleted'));
-    }
-    response.redirect('/')
+function logout(request, response) {
+  const session = request.session;
+  if (session.loggedIn) {
+    session.destroy(() => console.log('Session was deleted'));
+  }
+  response.redirect('/');
 }
 
-function setImg(request, response){
-    const session = request.session
-    let filePath;
-    if(session.loggedIn){
-        filePath = `/image/user/${request.file.filename}`
-       (async () => {
-            await User.update({image: filePath}, {
-                where: {id: session.user.id}
-             });
-             request.session.user.image = filePath
-        })()
-    }
-    response.render('homepage', {loggedIn: true, user: request.session.user});
+function setImg(request, response) {
+  const session = request.session;
+  let filePath;
+  if (session.loggedIn) {
+    filePath = `/image/user/${request.file.filename}`(async () => {
+      await User.update(
+        { image: filePath },
+        {
+          where: { id: session.user.id },
+        }
+      );
+      request.session.user.image = filePath;
+    })();
+  }
+  response.render('homepage', { loggedIn: true, user: request.session.user });
 }
-    
+
 // Routes
 
 router.get('/login', getLoginPage);
@@ -92,5 +91,3 @@ router.post('/create', addUser);
 router.post('/set-img', upload.single('file'), setImg);
 
 module.exports = router;
-
-
