@@ -1,4 +1,4 @@
-const redultData = [
+const resultData = [
   {
     user_id: 1,
     points: 5,
@@ -29,4 +29,4 @@ const redultData = [
   },
 ];
 
-module.exports = redultData;
+module.exports = resultData;
