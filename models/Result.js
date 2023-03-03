@@ -19,7 +19,6 @@ Result.init(
         key: 'id',
       },
     },
-
     points: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
