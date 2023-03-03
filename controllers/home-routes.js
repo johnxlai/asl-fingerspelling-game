@@ -16,23 +16,22 @@ router.get('/', async (req, res) => {
 
 //Get Router for Start Game page
 router.get('/start', async (req, res) => {
-  // try {
+  try {
+    if (req.session.user) {
+      const userData = await User.findByPk(req.session.user.id, {
+        attributes: { exclude: ['password'] },
+        include: [{ model: Result, attributes: ['points'] }],
+      });
+      const user = userData.get({ plain: true });
 
-  if (req.session.user) {
-    const userData = await User.findByPk(req.session.user.id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Result, attributes: ['points'] }],
-    });
-    const user = userData.get({ plain: true });
-
-    res.render('start', { ...user, loggedIn: req.session.loggedIn });
-  } else {
+      res.render('start', { ...user, loggedIn: req.session.loggedIn });
+      return;
+    }
+    //if user not logged in
     res.render('start');
+  } catch (err) {
+    res.status(500).json(err);
   }
-
-  // } catch (err) {
-  // res.status(500).json(err);
-  // }
 });
 
 //Ranking and highscore page
