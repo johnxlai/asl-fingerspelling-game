@@ -40,19 +40,14 @@ User.init(
         image: {
           type: DataTypes.STRING,
           defaultValue: '/image/user/userDefault.png'
+        },
+
+        superuser: {
+          type: DataTypes.BOOLEAN,
+          defaultValue: false,
         }
       },
-    },
-    level: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 1,
-    },
-    superuser: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-    },
-  },
+    
   {
     hooks: {
       async beforeCreate(newUserData) {
