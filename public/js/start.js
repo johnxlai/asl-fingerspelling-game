@@ -62,10 +62,9 @@ function displayWord(word) {
     image.src = letterImages[letters[i].toLowerCase()];
     image.alt = 'letter ' + i;
   }
-  // Increment the current word index (go to next question)
 
   // Update the level display
-  // questionNum.textContent = words[currentWordIndex].level;
+  questionNum.textContent = currentWordIndex;
 }
 
 function startGame() {
@@ -93,8 +92,6 @@ function checkGuess(event) {
   event.preventDefault();
   // Get the user input value
   let userInput = answerInput.value.trim().toLowerCase();
-
-  // Check if all words have been displayed END GAME
 
   // Check if the user input matches the current word
   let correct = userInput === words[currentWordIndex].word.toLowerCase();
