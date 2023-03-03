@@ -1,43 +1,46 @@
+//Selectors
+const gameForm = document.getElementById('game-form');
+const answerInput = document.getElementById('answer-input');
+
 // Define an object that maps each letter of the alphabet to an image filename
-      const letterImages = {
-        'a': 'image/alphabet/a.svg',
-        'b': 'image/alphabet/b.svg',
-        'c': 'image/alphabet/c.svg',
-        'd': 'image/alphabet/d.svg',
-        'e': 'image/alphabet/e.svg',
-        'f': 'image/alphabet/f.svg',
-        'g': 'image/alphabet/g.svg',
-        'h': 'image/alphabet/h.svg',
-        'i': 'image/alphabet/i.svg',
-        'j': 'image/alphabet/j.svg',
-        'k': 'image/alphabet/k.svg',
-        'l': 'image/alphabet/l.svg',
-        'm': 'image/alphabet/m.svg',
-        'n': 'image/alphabet/n.svg',
-        'o': 'image/alphabet/o.svg',
-        'p': 'image/alphabet/p.svg',
-        'q': 'image/alphabet/q.svg',
-        'r': 'image/alphabet/r.svg',
-        's': 'image/alphabet/s.svg',
-        't': 'image/alphabet/t.svg',
-        'u': 'image/alphabet/u.svg',
-        'v': 'image/alphabet/v.svg',
-        'w': 'image/alphabet/w.svg',
-        'x': 'image/alphabet/x.svg',
-        'y': 'image/alphabet/y.svg',
-        'z': 'image/alphabet/z.svg'
-      };
-      
-      // Define an array of words to use for the game, with each word assigned a level
-      const words = [
-        { word: "love", level: 1 },
-        { word: "joke", level: 2 },
-        { word: "feel", level: 3 },
-        { word: "Cook", level: 4 },
-        { word: "baby", level: 5 }
-      ];
-      
-      
+const letterImages = {
+  a: 'image/alphabet/a.svg',
+  b: 'image/alphabet/b.svg',
+  c: 'image/alphabet/c.svg',
+  d: 'image/alphabet/d.svg',
+  e: 'image/alphabet/e.svg',
+  f: 'image/alphabet/f.svg',
+  g: 'image/alphabet/g.svg',
+  h: 'image/alphabet/h.svg',
+  i: 'image/alphabet/i.svg',
+  j: 'image/alphabet/j.svg',
+  k: 'image/alphabet/k.svg',
+  l: 'image/alphabet/l.svg',
+  m: 'image/alphabet/m.svg',
+  n: 'image/alphabet/n.svg',
+  o: 'image/alphabet/o.svg',
+  p: 'image/alphabet/p.svg',
+  q: 'image/alphabet/q.svg',
+  r: 'image/alphabet/r.svg',
+  s: 'image/alphabet/s.svg',
+  t: 'image/alphabet/t.svg',
+  u: 'image/alphabet/u.svg',
+  v: 'image/alphabet/v.svg',
+  w: 'image/alphabet/w.svg',
+  x: 'image/alphabet/x.svg',
+  y: 'image/alphabet/y.svg',
+  z: 'image/alphabet/z.svg',
+};
+
+// Define an array of words to use for the game, with each word assigned a level
+const words = [
+  { word: 'love', level: 1 },
+  { word: 'joke', level: 2 },
+  { word: 'feel', level: 3 },
+  { word: 'Cook', level: 4 },
+  { word: 'baby', level: 5 },
+];
+
 // Define a variable to keep track of the current word index
 let currentWordIndex = 0;
 
@@ -65,8 +68,8 @@ function displayWord(word) {
 displayWord(words[currentWordIndex].word);
 
 // Add an event listener to the form submit button
-const form = document.getElementById('form');
-form.addEventListener('submit', (event) => {
+
+gameForm.addEventListener('submit', (event) => {
   event.preventDefault();
 
   // Get the user input value
@@ -90,7 +93,10 @@ form.addEventListener('submit', (event) => {
       displayWord(words[currentWordIndex].word);
 
       // Check if the current word is in level 1 and the user's answer is correct
-      if (words[currentWordIndex].level === 1 && userInput === words[currentWordIndex].word.toLowerCase()) {
+      if (
+        words[currentWordIndex].level === 1 &&
+        userInput === words[currentWordIndex].word.toLowerCase()
+      ) {
         // Unlock level 2 by setting the highestLevelCompleted variable to 1
         highestLevelCompleted = 1;
       }
@@ -110,16 +116,20 @@ form.addEventListener('submit', (event) => {
     } else {
       // Display an error message
       const feedback = document.getElementById('feedback');
-      feedback.textContent = 'Level ' + words[currentWordIndex].level + ' is locked. Complete level ' + (words[currentWordIndex].level - 1) + ' first.';
+      feedback.textContent =
+        'Level ' +
+        words[currentWordIndex].level +
+        ' is locked. Complete level ' +
+        (words[currentWordIndex].level - 1) +
+        ' first.';
     }
   } else {
     // Display an error message
     const feedback = document.getElementById('feedback');
-    feedback.textContent = 'Incorrect. Try again. guess right to unlock next level';
+    feedback.textContent =
+      'Incorrect. Try again. guess right to unlock next level';
   }
 
   // Clear the user input field
-  const input = document.getElementById('input');
-  input.value = '';
+  answerInput.value = '';
 });
-
