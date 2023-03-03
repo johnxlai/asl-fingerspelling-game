@@ -1,19 +1,19 @@
-
 const resultData = require('./resultSeeds');
 const userData = require('./userSeeds');
 const { User, Result } = require('../models');
+const superUser = require('./superUsersSeeds');
 
 const sequelize = require('../config/connection');
 
 const seedAll = async () => {
-    
-    await sequelize.sync({ force: true });
+  await sequelize.sync({ force: true });
+  await User.bulkCreate(userData);
+  await Result.bulkCreate(resultData);
 
-    await User.bulkCreate(userData);
+  //Creating a superUser
+  await superUser();
 
-    await Result.bulkCreate(resultData);
-
-    process.exit(0);
+  process.exit(0);
 };
 
 seedAll();

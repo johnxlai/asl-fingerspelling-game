@@ -32,6 +32,10 @@
         <a href="/api/users/create">Signup</a>
       {{/if}}
 
+      {{#if user.superuser }}
+      <span class="p-1 bg-pink-500 text-sm">SUPER</span>
+      {{/if}}
+
     </nav>
   </header>
 
