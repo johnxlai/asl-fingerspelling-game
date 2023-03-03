@@ -22,7 +22,12 @@
     </h1>
     <nav class="text-slate-200 flex items-center gap-3">
       <a href="/start">Play</a>
-      <a href="/ranks">Ranking</a
+      <a href="/ranks">Ranking</a>
+        {{#if user.superuser }}
+        <h3>hello</h3>
+        {{else}}
+          <h4>get out</h4>
+        {{/if}}
       {{#if loggedIn}}
         <a href="/profile">Profile</a>
         <a href="/api/users/logout">Logout</a>

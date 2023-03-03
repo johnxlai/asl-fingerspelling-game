@@ -1,8 +1,11 @@
 const { User } = require('../models');
+require('dotenv').config();
 
-User.create({
-  username: 'John',
-  password: '123456',
-  level: 100000,
-  superuser: true,
-});
+module.exports = () => {
+  User.create({
+    username: 'mark',
+    password: process.env.SUPERUSERPW,
+    level: 100000,
+    superuser: true,
+  });
+};
