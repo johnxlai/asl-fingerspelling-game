@@ -2,7 +2,7 @@
 const gameForm = document.getElementById('game-form');
 const answerInput = document.getElementById('answer-input');
 const pointsDisplay = document.getElementById('points-display');
-
+let feedback = document.getElementById('feedback');
 const levelDisplay = document.getElementById('level-display');
 
 const startGameBtn = document.querySelector('.start-game');
@@ -116,21 +116,11 @@ function checkGuess(event) {
       pointsDisplay.textContent = gamePoints;
 
       // Clear the feedback message
-      const feedback = document.getElementById('feedback');
-      feedback.textContent = '';
-    } else {
-      // Display an error message
-      const feedback = document.getElementById('feedback');
-      feedback.textContent =
-        'Level ' +
-        words[currentWordIndex].level +
-        ' is locked. Complete level ' +
-        (words[currentWordIndex].level - 1) +
-        ' first.';
+
+      feedback.textContent = 'GOOD JOB YOU GOT IT RIGHT';
     }
   } else {
     // Display an error message
-    const feedback = document.getElementById('feedback');
     feedback.textContent =
       'Incorrect. Try again. guess right to unlock next level';
   }
