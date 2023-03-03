@@ -16,10 +16,12 @@
 </head>
 
 <body class="flex flex-col h-screen bg-neutral-800">
+
   <header class="flex flex-col md:flex-row justify-center items-center  md:justify-between p-5">
     <h1 class="text-slate-200 mb-4 md:mb-0">
       <a href="/"><img class="max-w-[100%] w-[180px]" src="/image/finger-spell-logo.svg" alt="The Finger Spell Game"></a>
     </h1>
+
     <nav class="text-slate-200 flex items-center gap-3">
       <a href="/start">Play</a>
       <a href="/ranks">Ranking</a>
@@ -42,6 +44,9 @@
   <main class="p-5 grow flex justify-center items-center">
       {{{body}}}
   </main>
+
+  <!-- If the user is logged in, load the JS script for when they logout -->
+
   <footer class="mt-auto p-5 text-center">
     <p class="text-white">Project by Yaro , John, Fabien</p>
   </footer>
