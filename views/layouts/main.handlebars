@@ -19,6 +19,7 @@
   <header class="flex justify-between p-5">
     {{!-- <h1 class="text-slate-200">Finger Spell</h1> --}}
     <a href="/"><img class="max-w-[100%] w-[180px]" src="/image/fingerspell-logo.svg" alt="The Finger Spell Game"></a>
+    <a href="/api/users/profile"><img src="{{{user.image}}}" id="user-image" alt="user-image"></a>
     <nav class="text-slate-200 flex items-center gap-3">
       <a href="/start">Play</a>
       {{#if loggedIn}}
@@ -35,9 +36,6 @@
       {{{body}}}
   </main>
   <!-- If the user is logged in, load the JS script for when they logout -->
-   {{#if loggedIn}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
   <footer class="mt-auto p-5 text-center">
     <p class="text-white">Project by Yaro , John, Fabien</p>
   </footer>

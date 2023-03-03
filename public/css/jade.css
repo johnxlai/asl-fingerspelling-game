@@ -1704,3 +1704,11 @@ label form [type='radio'] {
     align-content: center;
   }
 }
+
+#user-image {
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+  right: 10px;
+  background-position: top right; 
+}

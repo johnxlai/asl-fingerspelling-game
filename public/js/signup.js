@@ -3,8 +3,7 @@ async function loginFormHandler(event) {
 
     const username = document.getElementById('form2Example1').value.trim();
     const password = document.getElementById('form2Example2').value.trim();
-
-
+   
     if (username && password) {
         const response = await fetch('/api/users/create', {
             method: 'POST',

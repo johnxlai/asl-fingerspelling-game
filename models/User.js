@@ -19,7 +19,8 @@ User.init(
         
         username: {
           type: DataTypes.STRING,
-          allowNull: false
+          allowNull: false,
+          unique: true
         },
  
         password: {
@@ -34,6 +35,11 @@ User.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             defaultValue: 1
+        },
+        
+        image: {
+          type: DataTypes.STRING,
+          defaultValue: '/image/user/userDefault.png'
         }
       },
   {

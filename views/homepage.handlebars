@@ -1,5 +1,25 @@
 <h2 class="text-2xl font-semibold text-pink-600"> 
 WELCOME TO THE FINGERSPELLING GAME {{{user.username}}}</h2>
+<img src="{{user.image}}">
+
+
+
+          <form
+            class="mt-4"
+            action="/api/users/set-img"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <div class="form-group">
+              <input
+                type="file"
+                name="file"
+                id="input-files"
+                class="form-control-file border"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
 
 {{!-- {{#each galleries as |gallery|}}
 {{> gallery-details}}
