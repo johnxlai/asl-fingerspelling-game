@@ -8,7 +8,11 @@ function addUser(request, response) {
     .then((user) => {
       const session = request.session;
       session.save(() => {
+
         session.user = user;
+
+   
+
         session.loggedIn = true;
         response.json(user)
       })
@@ -19,7 +23,7 @@ function addUser(request, response) {
 }
 
 function getLoginPage(request, response) {
-  response.render('login', {loggedIn: request.session.loggedIn});
+  response.render('login', { loggedIn: request.session.loggedIn });
 }
 
 function login(request, response) {
@@ -67,6 +71,7 @@ function setImg(request, response){
             await User.update({image: filePath}, {
                 where: {id: session.user.id}
              });
+             request.session.user.image = filePath
         })()
     }
     response.render('homepage', {loggedIn: true, user: request.session.user});

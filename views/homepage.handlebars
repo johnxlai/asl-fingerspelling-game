@@ -1,26 +1,16 @@
-<h2 class="text-2xl font-semibold text-pink-600"> 
-WELCOME TO THE FINGERSPELLING GAME {{{user.username}}}</h2>
-<img src="{{user.image}}">
 
+<section class="flex flex-col text-white text-center">
+  {{#if loggedIn}}
+    <h2 class="text-4xl font-semibold text-pink-600">
+    WELCOME {{{user.username}}}!</h2>
 
+  {{else}}
+    <h2 class="text-4xl font-semibold text-pink-600">
+{{!-- <img class="max-w-[100%] w-[120px]" src="/image/finger-spell-logo.svg" alt="The Finger Spell Game"> --}}
+      Welcome to Finger Spelling Game</h2>
+  {{/if}}
 
-          <form
-            class="mt-4"
-            action="/api/users/set-img"
-            method="POST"
-            enctype="multipart/form-data"
-          >
-            <div class="form-group">
-              <input
-                type="file"
-                name="file"
-                id="input-files"
-                class="form-control-file border"
-              />
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-
-{{!-- {{#each galleries as |gallery|}}
-{{> gallery-details}}
-{{/each}} --}}
+  <a class="btn bg-pink-500 text-white mt-3" href="/start">
+    <p>Are you ready to play?</p>
+  </a>
+</section>

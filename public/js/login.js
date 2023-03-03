@@ -1,5 +1,5 @@
 async function loginFormHandler(event) {
-    event.preventDefault();
+  event.preventDefault();
 
     const username = document.getElementById('form2Example1').value.trim();
     const password = document.getElementById('form2Example2').value.trim();
@@ -20,9 +20,17 @@ async function loginFormHandler(event) {
         } else {
             alert(response.statusText);
         }
+
     }
 
+    if (response.ok) {
+      document.location.replace('/profile');
+    } else {
+      alert(response.statusText);
+    }
+  }
 }
 
-document.getElementById('loginbtn').addEventListener('submit', loginFormHandler);
-
+document
+  .getElementById('loginbtn')
+  .addEventListener('submit', loginFormHandler);

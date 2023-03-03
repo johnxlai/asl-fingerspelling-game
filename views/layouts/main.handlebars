@@ -16,19 +16,28 @@
 </head>
 
 <body class="flex flex-col h-screen bg-neutral-800">
-  <header class="flex justify-between p-5">
-    {{!-- <h1 class="text-slate-200">Finger Spell</h1> --}}
-    <a href="/"><img class="max-w-[100%] w-[180px]" src="/image/fingerspell-logo.svg" alt="The Finger Spell Game"></a>
-    <a href="/api/users/profile"><img src="{{{user.image}}}" id="user-image" alt="user-image"></a>
+
+  <header class="flex flex-col md:flex-row justify-center items-center  md:justify-between p-5">
+    <h1 class="text-slate-200 mb-4 md:mb-0">
+      <a href="/"><img class="max-w-[100%] w-[180px]" src="/image/finger-spell-logo.svg" alt="The Finger Spell Game"></a>
+    </h1>
+
     <nav class="text-slate-200 flex items-center gap-3">
       <a href="/start">Play</a>
+      <a href="/ranks">Ranking</a>
+
       {{#if loggedIn}}
-         <a href="/api/users/logout">Logout</a>
+        <a href="/profile">Profile</a>
+        <a href="/api/users/logout">Logout</a>
       {{else}}
-          <a href="/api/users/login">Login</a>
-          <a href="/api/users/create">Signup</a>
+        <a href="/api/users/login">Login</a>
+        <a href="/api/users/create">Signup</a>
       {{/if}}
-      <a href="/">Highscore</a>
+
+      {{#if user.superuser }}
+      <span class="p-1 bg-pink-500 text-sm">SUPER</span>
+      {{/if}}
+
     </nav>
   </header>
 
