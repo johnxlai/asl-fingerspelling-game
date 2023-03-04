@@ -1,16 +1,16 @@
 
 <section class="flex flex-col text-white text-center">
   {{#if loggedIn}}
-    <h2 class="text-4xl font-semibold text-pink-600">
+    <h2 class="text-purple-300 mb-3 text-3xl font-extrabold">
     WELCOME {{{user.username}}}!</h2>
 
   {{else}}
-    <h2 class="text-4xl font-semibold text-pink-600">
+    <h2 class="text-purple-500 mb-3 text-3xl font-extrabold">
 {{!-- <img class="max-w-[100%] w-[120px]" src="/image/finger-spell-logo.svg" alt="The Finger Spell Game"> --}}
       Welcome to Finger Spelling Game</h2>
   {{/if}}
 
-  <a class="btn bg-pink-500 text-white mt-3" href="/start">
+  <a class="start-game btn text-neutral-800 bg-green-400 font-['Tilt_Warp'] mt-3" href="/start">
     <p>Are you ready to play?</p>
   </a>
 </section>
