@@ -5,15 +5,26 @@
   <div class="col-span-full bg-sky-500/[.06] p-3 rounded-lg text-white">
     <div class="grid grid-cols-3 gap-4">
       <div class="p-4 rounded-lg shadow-lg">
+        <img src="{{image}}" alt="">
         <p>User id{{id}}</p>
         <p>Username {{username}} </p>
         <p>User Level {{level}}</p>
-        {{#each results as |result|}}
-        <p>Total Points
-          {{result.points}}
-        </p>
-        {{/each}}
+        <p>Total player points: {{ total_points }}</p>
+        <p>Game History</p>
+        <ul>
+          {{#each results as |result|}}
+            <li>pts: {{result.points}}</li>
+          {{/each}}
+        </ul>
+
       </div>
     </div>
   </div>
+
+  <form class="mt-4" action="/api/users/set-img" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+      <input type="file" name="file" id="input-files" class="form-control-file border" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
 </section>

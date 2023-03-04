@@ -5,7 +5,8 @@ const pointsDisplay = document.getElementById('points-display');
 let feedback = document.getElementById('feedback');
 const questionNum = document.getElementById('question-num');
 const questionsFrame = document.getElementById('question-frame');
-
+const userExistingPts =
+  document.querySelector('.user-existing-pts').innerHTML || 0;
 const startGameBtn = document.querySelector('.start-game');
 
 let gamePoints = 0;
@@ -71,6 +72,8 @@ function startGame() {
   // Display the first word
   questionsFrame.classList.remove('hidden');
   displayWord(words[currentWordIndex].word);
+
+  console.log(userExistingPts);
 }
 
 function goToNextQuestion() {
@@ -85,7 +88,7 @@ function goToNextQuestion() {
 function endGame() {
   feedback.textContent = `<h3>YOUR FINAL SCORE is ${gamePoints}</h3>`;
   console.log(`Final point ${gamePoints}`);
-  fetchPoint(gamePoints);
+  fetchPoint(gamePoints, userExistingPts);
 }
 
 //Check the answer
@@ -120,10 +123,10 @@ startGameBtn.addEventListener('click', startGame);
 gameForm.addEventListener('submit', checkGuess);
 
 ///ADD FETCH
-async function fetchPoint(points) {
+async function fetchPoint(points, total_points) {
   const response = await fetch('/api/results/create', {
     method: 'POST',
-    body: JSON.stringify({ points }),
+    body: JSON.stringify({ points, total_points }),
     headers: { 'Content-Type': 'application/json' },
   });
   if (response.status === 404) {

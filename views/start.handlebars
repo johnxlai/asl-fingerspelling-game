@@ -4,12 +4,9 @@
     {{#if loggedIn}}
       <h1>Have Fun <span class="uppercase">{{ username }}</span></h1>
       <p>Level {{ level }}</p>
-      <p>Total player points:</p>
-        {{#each results as |result|}}
-        <p>Total Points
-          {{result.total_points}}
-        </p>
-        {{/each}}
+      <p>Total player points: <span class="user-existing-pts">{{ total_points }}</span></p>
+    {{ else }}
+      <span class="user-existing-pts hidden">0</span>
     {{/if}}
   </div>
 
