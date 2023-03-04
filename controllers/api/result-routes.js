@@ -4,15 +4,8 @@ const { Result } = require('../../models');
 function addResult(request, response) {
   const session = request.session;
   if (session && session.user) {
-    console.log(session.user.id);
     Result.create({ user_id: session.user.id, points: request.body.points })
-      .then((result) => {
-        console.log('RESULT: ', result);
-        return result;
-      })
-      .then((result) => {
-        response.json(result);
-      });
+      .then(result => result)
   }
   response.redirect('/');
 }
