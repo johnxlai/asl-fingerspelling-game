@@ -13,25 +13,29 @@
   <div class="text-center">
     <h1 class="px-4 py-2 bg-purple-300 text-purple-600 inline-block mb-3 text-3xl font-extrabold before:absolute before:bg-purple-600 relative h1-bg-style">Level 1</h1>
   </div>
-  <div class="text-center mt-4">
-    <button class="start-game btn bg-green-400 font-['Tilt_Warp'] hover:bg-green-600">START</button>
+  <div class="text-center">
+    <button class="start-game mt-4 btn bg-green-400 font-['Tilt_Warp'] hover:bg-green-600">START</button>
   </div>
 
-  <div id="question-frame" class="main-game hidden mb-4 w-full p-10 rounded-lg">
+  <div id="question-frame" class="main-game hidden mb-4 w-full p-3 rounded-lg">
+    <div class="text-center">
+      <div id="feedback"></div>
+      <div>Questions Number: <span id="question-num"></span></div>
+      <div>POINTS: <span id="points-display"></span></div>
+    </div>
+
       <div id="" class="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         <img id="image-0" src="" alt="letter 0">
         <img id="image-1" src="" alt="letter 1">
         <img id="image-2" src="" alt="letter 2">
         <img id="image-3" src="" alt="letter 3">
       </div>
-      <div id="feedback"></div>
-        <div>Questions Number: <span id="question-num"></span></div>
-        <div>POINTS: <span id="points-display"></span></div>
+
         {{!-- <div class="timer">Time Left: 5</div> --}}
         <form id="game-form" class="text-black">
           <label for="input" class="text-white">User Input:</label>
           <input type="text" id="answer-input" class="answer" name="answer">
-          <button type="submit" class="btn bg-pink-500">Submit</button>
+          <button type="submit" class="btn bg-green-400 text-neutral-800 font-['Tilt_Warp'] hover:bg-green-600">Submit</button>
 
         </form>
     </div>
