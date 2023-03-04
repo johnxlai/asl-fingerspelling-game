@@ -120,10 +120,10 @@ startGameBtn.addEventListener('click', startGame);
 gameForm.addEventListener('submit', checkGuess);
 
 ///ADD FETCH
-async function fetchPoint(finalpoint) {
+async function fetchPoint(points) {
   const response = await fetch('/api/results/create', {
     method: 'POST',
-    body: JSON.stringify({ finalpoint }),
+    body: JSON.stringify({ points }),
     headers: { 'Content-Type': 'application/json' },
   });
   if (response.status === 404) {
