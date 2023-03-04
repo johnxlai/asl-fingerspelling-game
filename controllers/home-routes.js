@@ -18,18 +18,6 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/start', async (req, res) => {
-  //yaro test
-  // const userData = await Result.findAll(
-  //   { where: { user_id: req.session.user.id } },
-  //   {
-  //     attributes: [
-  //       'itemId',
-  //       [sequelize.fn('sum', sequelize.col('points')), 'total_points'],
-  //     ],
-  //     order: sequelize.literal('total DESC'),
-  //   }
-  // );
-
   try {
     if (req.session.user) {
       const userData = await User.findByPk(req.session.user.id, {
@@ -44,26 +32,10 @@ router.get('/start', async (req, res) => {
             ],
           ],
         },
-        include: [
-          {
-            model: Result,
-            // attributes: {
-            //   // [sequelize.fn('sum', sequelize.col('points')), 'total_points'],
-            //   include: [
-            //     [
-            //       sequelize.literal(
-            //         `(SELECT SUM(points) FROM result WHERE result.user_id = user.id )`
-            //       ),
-            //       'total_points',
-            //     ],
-            //   ],
-            // },
-          },
-        ],
+        include: [{ model: Result }],
       });
       const user = userData.get({ plain: true });
 
-      console.log(user);
       res.render('start', { ...user, loggedIn: req.session.loggedIn });
       return;
     }
@@ -73,46 +45,6 @@ router.get('/start', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-//Get Router for Start Game page
-// router.get('/start', async (req, res) => {
-//   //yaro test
-//   // const userData = await Result.findAll(
-//   //   { where: { user_id: req.session.user.id } },
-//   //   {
-//   //     attributes: [
-//   //       'itemId',
-//   //       [sequelize.fn('sum', sequelize.col('points')), 'total_points'],
-//   //     ],
-//   //     order: sequelize.literal('total DESC'),
-//   //   }
-//   // );
-
-//   try {
-//     if (req.session.user) {
-//       const userData = await User.findByPk(req.session.user.id, {
-//         attributes: { exclude: ['password'] },
-//         include: [
-//           {
-//             model: Result,
-//             attributes: [
-//               [sequelize.fn('sum', sequelize.col('points')), 'total_points'],
-//             ],
-//           },
-//         ],
-//       });
-//       const user = userData.get({ plain: true });
-
-//       console.log(user);
-//       res.render('start', { ...user, loggedIn: req.session.loggedIn });
-//       return;
-//     }
-//     //if user not logged in
-//     res.render('start');
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 //Ranking and highscore page
 router.get('/ranks', async (req, res) => {
