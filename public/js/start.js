@@ -85,6 +85,7 @@ function goToNextQuestion() {
 function endGame() {
   feedback.textContent = `<h3>YOUR FINAL SCORE is ${gamePoints}</h3>`;
   console.log(`Final point ${gamePoints}`);
+  fetchPoint(gamePoints);
 }
 
 //Check the answer
@@ -117,3 +118,21 @@ function checkGuess(event) {
 //ADDEVENTLISTENER
 startGameBtn.addEventListener('click', startGame);
 gameForm.addEventListener('submit', checkGuess);
+
+///ADD FETCH
+async function fetchPoint(finalpoint) {
+  const response = await fetch('/api/results/create', {
+    method: 'POST',
+    body: JSON.stringify({ finalpoint }),
+    headers: { 'Content-Type': 'application/json' },
+  });
+  if (response.status === 404) {
+    document.getElementById('error').innerText =
+      'User does not exist! Try to use other username or password';
+  }
+  if (response.ok) {
+    document.location.replace('/profile');
+  } else {
+    alert(response.statusText);
+  }
+}
