@@ -9,11 +9,13 @@
         <p>Username {{username}} </p>
         <p>User Level {{level}}</p>
         <p>Total player points: {{ total_points }}</p>
-        {{#each results as |result|}}
-        <p>Total Points
-          {{result.points}}
-        </p>
-        {{/each}}
+        <p>Game History</p>
+        <ul>
+          {{#each results as |result|}}
+            <li>pts: {{result.points}}</li>
+          {{/each}}
+        </ul>
+
       </div>
     </div>
   </div>
