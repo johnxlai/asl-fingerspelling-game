@@ -21,3 +21,11 @@ body {
     font-family: Tilt Warp, system-ui;
   }
 }
+
+.h1-bg-style::before {
+  left: 6px;
+  top: -5px;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
