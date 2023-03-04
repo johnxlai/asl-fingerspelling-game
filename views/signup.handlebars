@@ -1,5 +1,43 @@
- <h2 id="error" style="color: white;"></h2>
- 
+<section class="flex flex-col items-center w-11/12 lg:10/12">
+  <div class="text-center">
+    <h2 id="error" class="text-white mb-4"></h2>
+
+    <h1
+      class="px-4 py-2 bg-purple-300 text-purple-600 inline-block mb-3 text-3xl font-extrabold before:absolute before:bg-purple-600 relative h1-bg-style">
+      SIGN UP</h1>
+  </div>
+
+  <div class="w-full max-w-xs">
+    <form id="loginbtn" class="bg-purple-300 text-purple-600  shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <div class="mb-4">
+        <label class="block text-purple-600 text-sm font-bold mb-2" for="username">
+          Username
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="form2Example1" type="username" placeholder="Username">
+      </div>
+      <div class="mb-6">
+        <label class="block text-purple-600 text-sm font-bold mb-2" for="password">
+          Password
+        </label>
+        <input
+          class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          id="form2Example2" type="password" placeholder="******************">
+        {{!-- <p class="text-red-500 text-xs italic">Please choose a password.</p> --}}
+      </div>
+      <div class="flex items-center justify-between">
+        <button
+          class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded w-100 focus:outline-none focus:shadow-outline"
+          type="submit">
+          Sign Up
+        </button>
+      </div>
+    </form>
+  </div>
+
+ {{!-- <h2 id="error" style="color: white;"></h2>
+
  <form id="loginbtn">
   <!-- Email input -->
   <div class="form-outline mb-4">
@@ -20,8 +58,8 @@
   </div>
 
   <!-- Submit button -->
-  <button type="submit" class="btn btn-primary btn-block mb-4">SignUp</button>
+  <button type="submit" class="btn btn-primary btn-block mb-4">S</button>
 
-</form> 
+</form>  --}}
 
 <script src="/js/signup.js"></script>
