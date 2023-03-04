@@ -74,7 +74,28 @@ function setImg(request, response) {
   response.render('homepage', { loggedIn: true, user: request.session.user });
 }
 
+
+function deleteMyself(request, response){
+    const session = request.session
+    if(session && session.user){
+        (async () => await User.destroy({where: {id: request.session.user.id}}))()
+    }
+    response.redirect('/api/users/logout')
+}
+
+function deleteUser(request, response){
+    const session = request.session
+    if(session && session.user && session.user.superuser){
+        (async () => await User.destroy({where: {id: request.params.id}}))()
+    }
+    response.render('homepage', { loggedIn: true, user: request.session.user });
+}
+
 // Routes
+
+router.use('/delete-myself', deleteMyself)
+
+router.use('/delete/:id', deleteUser)
 
 router.get('/login', getLoginPage);
 

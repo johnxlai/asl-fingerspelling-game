@@ -9,4 +9,7 @@
     {{#if @last}} {{result.points}}{{/if}}
   {{/each}}
   </p>
+    {{#if user.superuser}}
+    <a href="/api/users/delete/{{id}}" class="badge badge-danger">Delete Account</a>
+    {{/if}}
 </div>
