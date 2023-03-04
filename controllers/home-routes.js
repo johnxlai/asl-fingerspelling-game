@@ -50,7 +50,17 @@ router.get('/start', async (req, res) => {
 router.get('/ranks', async (req, res) => {
   try {
     const usersData = await User.findAll({
-      attributes: { exclude: ['password'] },
+      attributes: {
+        exclude: ['password'],
+        include: [
+          [
+            sequelize.literal(
+              `(SELECT SUM(points) FROM result WHERE result.user_id = user.id )`
+            ),
+            'total_points',
+          ],
+        ],
+      },
       include: [{ model: Result, attributes: ['points'] }],
     });
 
