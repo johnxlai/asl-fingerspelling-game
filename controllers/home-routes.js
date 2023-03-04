@@ -66,20 +66,18 @@ router.get('/ranks', async (req, res) => {
 router.get('/profile', async (req, res) => {
   try {
     if (req.session.user) {
-      //yaro test
-      // const userData = await Result.findAll(
-      //   { where: { user_id: req.session.user.id } },
-      //   {
-      //     attributes: [
-      //       'itemId',
-      //       [sequelize.fn('sum', sequelize.col('points')), 'total_points'],
-      //     ],
-      //     order: sequelize.literal('total DESC'),
-      //   }
-      // );
-
       const userData = await User.findByPk(req.session.user.id, {
-        attributes: { exclude: ['password'] },
+        attributes: {
+          exclude: ['password'],
+          include: [
+            [
+              sequelize.literal(
+                `(SELECT SUM(points) FROM result WHERE result.user_id = user.id )`
+              ),
+              'total_points',
+            ],
+          ],
+        },
         include: [{ model: Result, attributes: ['points'] }],
       });
 
