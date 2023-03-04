@@ -70,6 +70,7 @@ function displayWord(word) {
 
 function startGame() {
   // Display the first word
+  startGameBtn.classList.add('hidden');
   questionsFrame.classList.remove('hidden');
   displayWord(words[currentWordIndex].word);
 
