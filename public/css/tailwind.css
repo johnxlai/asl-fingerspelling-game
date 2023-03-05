@@ -40,3 +40,7 @@ body {
 .border-purple-600 {
   border: 1px solid rgb(147 51 234);
 }
+
+#input-files {
+  font-family: 'Tilt Warp';
+}
