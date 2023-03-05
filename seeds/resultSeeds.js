@@ -1,11 +1,11 @@
 const resultData = [
   {
     user_id: 1,
-    points: 10,
+    points: 100000,
   },
   {
     user_id: 1,
-    points: 10,
+    points: 50,
   },
   {
     user_id: 2,
@@ -29,7 +29,7 @@ const resultData = [
   },
   {
     user_id: 4,
-    points: 1500,
+    points: 300,
   },
   {
     user_id: 5,
@@ -37,7 +37,7 @@ const resultData = [
   },
   {
     user_id: 6,
-    points: 500,
+    points: 5000,
   },
   {
     user_id: 7,
@@ -45,7 +45,7 @@ const resultData = [
   },
   {
     user_id: 8,
-    points: 100,
+    points: 1000,
   },
   {
     user_id: 8,
