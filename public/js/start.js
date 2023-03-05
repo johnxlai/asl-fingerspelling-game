@@ -72,6 +72,7 @@ function startGame() {
   // Display the first word
   startGameBtn.classList.add('hidden');
   questionsFrame.classList.remove('hidden');
+  answerInput.focus();
   displayWord(words[currentWordIndex].word);
 
   console.log(userExistingPts);
@@ -123,7 +124,7 @@ function checkGuess(event) {
 startGameBtn.addEventListener('click', startGame);
 gameForm.addEventListener('submit', checkGuess);
 
-///ADD FETCH
+///ADD FETCH to give user final game points and total points to route, to add back to model
 async function fetchPoint(points, total_points) {
   const response = await fetch('/api/results/create', {
     method: 'POST',
