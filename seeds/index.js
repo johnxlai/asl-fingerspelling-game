@@ -18,15 +18,41 @@ const seedAll = async () => {
   await User.create({
     username: 'peter-parker',
     level: 3,
-    password: 'password3',
+    password: '123456',
   });
 
   await User.create({
     username: 'richey_rich',
     level: 2,
-    password: 'password2',
+    password: '123456',
+  });
+  await User.create({
+    username: 'messi',
+    level: 3,
+    password: '123456',
   });
 
+  await User.create({
+    username: 'ronaldo',
+    level: 2,
+    password: '123456',
+  });
+
+  await User.create({
+    username: 'yaro',
+    level: 10,
+    password: '123456',
+  });
+  await User.create({
+    username: 'fabien',
+    level: 5,
+    password: '123456',
+  });
+  await User.create({
+    username: 'john',
+    level: 8,
+    password: '123456',
+  });
   await Result.bulkCreate(resultData);
 
   //Creating a superUser

@@ -1,21 +1,18 @@
 <p id="superuser">{{is_superuser}}</p>
 {{#if id}}
 <div class="p-3 md:px-7 md:py-3 rounded-lg shadow-lg bg-purple-900/[0.2]">
-  <div class="text-purple-300 flex flex-col lg:flex-row items-center justify-between">
-    <div class="flex flex-col md:flex-row md:flex-wrap md:gap-10">
-      <div class="flex justify-center items-center mb-3 md:mb-0">
-          <h6 id="indexOf" class="text-3xl">{{@index}}</h6>
-      </div>
-      <div class="flex flex-col justify-center items-center mb-3 md:mb-0">
-        <a href="/profile/{{id}}"><img src="{{image}}" alt="" class="w-[80px] max-w-full rounded-full mb-3 md:mb-0 border-2 border-solid border-purple-300"></a>
-        {{#unless superuser}} 
-          <button class="btn bg-rose-700 text-white text-xs p-1 font-bold remove">
-          </button>]
-        {{/unless}}
-      </div>
-      <div class="flex flex-col md:flex-row justify-center items-center mb-3 md:mb-0 gap-4">
+  <div class="text-purple-300 flex flex-col xl:flex-row items-center justify-between">
+    <div class="flex flex-col w-100 lg:w-auto lg:flex-row lg:flex-wrap md:gap-2 lg:gap-10 items-center md:justify-center lg:justify-start">
+        <h6 class="text-3xl self-start md:self-center ml-3 md:ml-0 md:w-100 md:text-center">{{@index}}</h6>
+        <div class="flex flex-col justify-center items-center mb-3 md:mb-0">
+          <a href="/profile/{{id}}"><img src="{{image}}" alt=""
+              class="w-[80px] max-w-full rounded-full mb-3 md:mb-0 border-2 border-solid border-purple-300"></a>
+          {{#unless superuser}}
+            <button class="btn bg-rose-700 text-white text-xs p-1 font-bold remove"></button>
+          {{/unless}}
+        </div>
+
         <div class="text-white text-2xl uppercase font-bold mb-2 md:mb-0">{{username}}</div>
-      </div>
     </div>
     <div class="flex flex-col md:flex-row gap-3 md:gap-6">
       <div class="grid grid-cols-2 md:grid-cols-4 justify-between items-center gap-3">
