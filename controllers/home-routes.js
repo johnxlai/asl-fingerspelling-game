@@ -48,8 +48,14 @@ router.get('/start', async (req, res) => {
 
 //Ranking and highscore page
 router.get('/ranks', async (req, res) => {
-  try {
-    const usersData = await User.findAll({
+  const session = req.session;
+  let is_superuser = false
+  if(session && session.user){
+      is_superuser = session.user.is_superuser;
+  }
+ // try {
+    let usersData = [{is_superuser: is_superuser}]
+    const usersData_ = await User.findAll({
       attributes: {
         exclude: ['password'],
         include: [
@@ -64,38 +70,55 @@ router.get('/ranks', async (req, res) => {
       },
       include: [{ model: Result, attributes: ['points'] }],
     });
+  
+   
 
     //loop thru all users and display user
-    const users = usersData.map((user) => user.get({ plain: true }));
-    res.render('ranks', { users, loggedIn: req.session.loggedIn });
-  } catch (err) {
-    res.status(500).json(err);
-  }
+    let users = usersData_.map((user) => user.get({ plain: true }));
+    users = usersData.concat(users)
+    res.render('ranks', { users, is_superuser: is_superuser, loggedIn: req.session.loggedIn });
+  // } catch (err) {
+  //   res.status(500).json(err);
+  // }
 });
+
+async function getUser(id, req, res){
+  const userData = await User.findByPk(id, {
+    attributes: {
+      exclude: ['password'],
+      include: [
+        [
+          sequelize.literal(
+            `(SELECT SUM(points) FROM result WHERE result.user_id = user.id )`
+          ),
+          'total_points',
+        ],
+      ],
+    },
+    include: [{ model: Result, attributes: ['points'] }],
+  });
+  const user = userData.get({ plain: true });
+  res.render('profile', { ...user, loggedIn: req.session.loggedIn });
+}
 
 // Profile page (with Auth)
 router.get('/profile', async (req, res) => {
   try {
     if (req.session.user) {
-      const userData = await User.findByPk(req.session.user.id, {
-        attributes: {
-          exclude: ['password'],
-          include: [
-            [
-              sequelize.literal(
-                `(SELECT SUM(points) FROM result WHERE result.user_id = user.id )`
-              ),
-              'total_points',
-            ],
-          ],
-        },
-        include: [{ model: Result, attributes: ['points'] }],
-      });
+        getUser(req.session.user.id, req, res)
+    } else {
+      res.render('login');
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
-      const user = userData.get({ plain: true });
-      console.log(user);
-
-      res.render('profile', { ...user, loggedIn: req.session.loggedIn });
+router.get('/profile/:id', async (req, res) => {
+  try {
+    if(req.session.user && req.session.user.superuser){
+        getUser(req.params.id, req, res)
     } else {
       res.render('login');
     }

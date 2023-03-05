@@ -1,3 +1,5 @@
+<p id="superuser">{{is_superuser}}</p>
+{{#if id}}
 <div class="p-3 md:px-7 md:py-3 rounded-lg shadow-lg bg-purple-900/[0.2]">
   <div class="text-purple-300 flex flex-col lg:flex-row items-center justify-between">
     <div class="flex flex-col md:flex-row md:flex-wrap md:gap-10">
@@ -5,12 +7,11 @@
           <h6 id="indexOf" class="text-3xl">{{@index}}</h6>
       </div>
       <div class="flex flex-col justify-center items-center mb-3 md:mb-0">
-        <img src="{{image}}" alt="" class="w-[80px] max-w-full rounded-full mb-3 md:mb-0 border-2 border-solid border-purple-300">
-        {{!-- {{#if superuser }}
-          <button class="btn bg-rose-700 text-white text-xs p-1 font-bold">
-            Delete User
-          </button>
-        {{/if}} --}}
+        <a href="/profile/{{id}}"><img src="{{image}}" alt="" class="w-[80px] max-w-full rounded-full mb-3 md:mb-0 border-2 border-solid border-purple-300"></a>
+        {{#unless superuser}} 
+          <button class="btn bg-rose-700 text-white text-xs p-1 font-bold remove">
+          </button>]
+        {{/unless}}
       </div>
       <div class="flex flex-col md:flex-row justify-center items-center mb-3 md:mb-0 gap-4">
         <div class="text-white text-2xl uppercase font-bold mb-2 md:mb-0">{{username}}</div>
@@ -44,8 +45,6 @@
     </div>
   </div>
 </div>
+{{/if}}
 
-<script>
-  const indexOf = document.getElementById('indexOf')
-  indexOf.innerText = parseInt(indexOf.innerText) + 1;
-</script>
+

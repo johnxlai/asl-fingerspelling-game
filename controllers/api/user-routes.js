@@ -12,10 +12,10 @@ function addUser(request, response) {
       session.loggedIn = true;
       response.json(user);
     });
+  })
+  .catch((error) => {
+    response.status(400).json({error: `User ${request.body.username} already exists`});
   });
-  //.catch((error) => {
-  //  response.status(500).json(error);
-  // });
 }
 
 function getLoginPage(request, response) {
