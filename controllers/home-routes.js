@@ -60,6 +60,7 @@ router.get('/ranks', async (req, res) => {
             'total_points',
           ],
         ],
+        order: [['level', 'ASC']],
       },
       include: [{ model: Result, attributes: ['points'] }],
     });

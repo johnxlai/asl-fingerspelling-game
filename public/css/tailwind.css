@@ -2,6 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-/* h1 {
-  background-color: black;
-} */
+/* Add custom style here */
+/* RUN -> NPM RUN TAILWIND in termial to complie */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Tilt Warp', cursive;
+}
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+@layer base {
+  html {
+    font-family: Tilt Warp, system-ui;
+  }
+}
+
+.h1-bg-style::before {
+  left: 6px;
+  top: -5px;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+.start-game {
+  height: 180px;
+  width: 180px;
+  border-radius: 50%;
+  font-size: 3rem;
+  border: 7px solid white;
+}
+
+.border-purple-600 {
+  border: 1px solid rgb(147 51 234);
+}
+
+#input-files {
+  font-family: 'Tilt Warp';
+}

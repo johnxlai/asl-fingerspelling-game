@@ -3,7 +3,7 @@ const gameForm = document.getElementById('game-form');
 const answerInput = document.getElementById('answer-input');
 const pointsDisplay = document.getElementById('points-display');
 let feedback = document.getElementById('feedback');
-const questionNum = document.getElementById('question-num');
+// const questionNum = document.getElementById('question-num');
 const questionsFrame = document.getElementById('question-frame');
 const userExistingPts =
   document.querySelector('.user-existing-pts').innerHTML || 0;
@@ -57,7 +57,7 @@ function displayWord(word) {
   // Split the word into an array of letters
   const letters = word.split('');
 
-  // Loop through the letters array and set the src attribute of each image to the corresponding letter image
+  // Loop through the letters array and set the src attribute of each image to the corresponding lette r image
   for (let i = 0; i < letters.length; i++) {
     const image = document.getElementById('image-' + i);
     image.src = letterImages[letters[i].toLowerCase()];
@@ -65,12 +65,14 @@ function displayWord(word) {
   }
 
   // Update the level display
-  questionNum.textContent = currentWordIndex;
+  // questionNum.textContent = currentWordIndex;
 }
 
 function startGame() {
   // Display the first word
+  startGameBtn.classList.add('hidden');
   questionsFrame.classList.remove('hidden');
+  answerInput.focus();
   displayWord(words[currentWordIndex].word);
 
   console.log(userExistingPts);
@@ -86,7 +88,7 @@ function goToNextQuestion() {
 }
 //end of game
 function endGame() {
-  feedback.textContent = `<h3>YOUR FINAL SCORE is ${gamePoints}</h3>`;
+  feedback.textContent = `YOUR FINAL SCORE is ${gamePoints}`;
   console.log(`Final point ${gamePoints}`);
   fetchPoint(gamePoints, userExistingPts);
 }
@@ -122,7 +124,7 @@ function checkGuess(event) {
 startGameBtn.addEventListener('click', startGame);
 gameForm.addEventListener('submit', checkGuess);
 
-///ADD FETCH
+///ADD FETCH to give user final game points and total points to route, to add back to model
 async function fetchPoint(points, total_points) {
   const response = await fetch('/api/results/create', {
     method: 'POST',
