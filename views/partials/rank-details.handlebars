@@ -1,37 +1,34 @@
 <div class="p-4 rounded-lg shadow-lg">
-  <div class="text-purple-300 flex flex-wrap items-center justify-between">
-    <div>
-      <h6 class="text-3xl">{{@index}}</h6>
+  <div class="text-purple-300 grid grid-cols-1 lg:grid-cols-8">
+    <div class="col-span-2 flex justify-center items-center mb-3">
+        <h6 class="text-3xl">{{@index}}</h6>
     </div>
-    <img src="{{image}}" alt="" class="w-[100px] max-w-full rounded-full">
-    <div class="">
-      <div class="col-span-full text-right">
-        <button class="btn bg-rose-700 text-white text-xs p-1 font-bold">
-          Delete User
-        </button>
-      </div>
-
-      <div>{{ username}}</div>
-      <div class="col-span-2 bg-green">
-        <p>User id{{id}}</p>
-      </div>
-      <div class="col-span-1 bg-black">
-        <p> </p>
-      </div>
-
-
+    <div class="col-span-2 flex flex-col justify-center items-center mb-3">
+      <img src="{{image}}" alt="" class="w-[100px] max-w-full rounded-full mb-3">
+      <button class="btn bg-rose-700 text-white text-xs p-1 font-bold">
+        Delete User
+      </button>
+    </div>
+    <div class="col-span-2 flex flex-col justify-center items-center">
+      <div class="text-white text-2xl uppercase font-bold mb-2">{{ username}}</div>
+      <p class="flex">
+        <span class="bg-white text-purple-400 p-2 uppercase font-bold text-sm rounded-l-lg">id</span>
+        <span class="bg-purple-400 text-white p-2 uppercase font-bold text-sm rounded-r-lg">{{id}}</span>
+        </p>
+    </div>
+    <div class="col-span-2 flex justify-center items-center bg-black">
       <p>User Level {{level}}</p>
-      <p>Total player points: {{ total_points }}</p>
       <p>Total games played: {{ results.length}}</p>
       <p>Last Game result :
         {{#each results as |result|}}
         {{#if @last}} {{result.points}}{{/if}}
         {{/each}}
       </p>
+      <div class="bg-purple-800 text-white p-3 rounded-md flex flex-col justify-center items-center">
+        <p>Total player points: </p>
+        <p>{{ total_points }}</p>
+      </div>
 
     </div>
   </div>
-
-
-
 </div>
