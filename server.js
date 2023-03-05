@@ -7,12 +7,12 @@ const path = require('path');
 
 //Connection
 const sequelize = require('./config/connection');
-const helpers = require('./utils/helpers');
+// const helpers = require('./utils/helpers');
 
 //init express
 const app = express();
 const PORT = process.env.PORT || 3002;
-const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create();
 
 app.use(session);
 app.engine('handlebars', hbs.engine);

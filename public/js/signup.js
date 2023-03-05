@@ -11,8 +11,8 @@ async function loginFormHandler(event) {
             headers: {'Content-Type': 'application/json'}
         });
 
-        if (response.status === 404){
-            document.getElementById('error').innerText = "User does not exist! Try to use other username or password"
+        if (response.status === 400){
+            document.getElementById('error').innerText = `User "${username}" already exists`
         }
 
         if (response.ok) {
@@ -22,12 +22,6 @@ async function loginFormHandler(event) {
         }
 
 
-    }
-
-    if (response.ok) {
-      document.location.replace('/');
-    } else {
-      alert(response.statusText);
     }
   }
 
