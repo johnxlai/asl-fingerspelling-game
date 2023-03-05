@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="p-3 md:px-7 md:py-3 rounded-lg shadow-lg bg-purple-900/[0.2]">
   <div class="text-purple-300 flex flex-col lg:flex-row items-center justify-between">
     <div class="flex flex-col md:flex-row md:flex-wrap md:gap-10">
@@ -49,3 +50,20 @@
   const indexOf = document.getElementById('indexOf')
   indexOf.innerText = parseInt(indexOf.innerText) + 1;
 </script>
+=======
+<div class="p-4 rounded-lg shadow-lg bg-pink-500">
+  <p>User id{{id}}</p>
+  <p>Username {{username}} </p>
+  <p>User Level {{level}}</p>
+  <p>Total player points: {{ total_points }}</p>
+  <p>Total games played: {{ results.length}}</p>
+  <p>Last Game result :
+  {{#each results as |result|}}
+    {{#if @last}} {{result.points}}{{/if}}
+  {{/each}}
+  </p>
+    {{#if user.superuser}}
+    <a href="/api/users/delete/{{id}}" class="badge badge-danger">Delete Account</a>
+    {{/if}}
+</div>
+>>>>>>> main
