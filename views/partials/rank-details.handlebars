@@ -2,7 +2,7 @@
   <div class="text-purple-300 flex flex-col lg:flex-row items-center justify-between">
     <div class="flex flex-col md:flex-row md:flex-wrap md:gap-10">
       <div class="flex justify-center items-center mb-3 md:mb-0">
-          <h6 class="text-3xl">{{@index}}</h6>
+          <h6 id="indexOf" class="text-3xl">{{@index}}</h6>
       </div>
       <div class="flex flex-col justify-center items-center mb-3 md:mb-0">
         <img src="{{image}}" alt="" class="w-[80px] max-w-full rounded-full mb-3 md:mb-0 border-2 border-solid border-purple-300">
@@ -45,3 +45,7 @@
   </div>
 </div>
 
+<script>
+  const indexOf = document.getElementById('indexOf')
+  indexOf.innerText = parseInt(indexOf.innerText) + 1;
+</script>
