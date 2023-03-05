@@ -81,6 +81,7 @@ router.get('/ranks', async (req, res) => {
   res.render('ranks', {
     users,
     loggedIn: req.session.loggedIn,
+    user: req.session.user,
   });
   // } catch (err) {
   //   res.status(500).json(err);
@@ -103,7 +104,11 @@ async function getUser(id, req, res) {
     include: [{ model: Result, attributes: ['points'] }],
   });
   const user = userData.get({ plain: true });
-  res.render('profile', { ...user, loggedIn: req.session.loggedIn });
+  res.render('profile', {
+    ...user,
+    loggedIn: req.session.loggedIn,
+    user: req.session.user,
+  });
 }
 
 // Profile page (with Auth)
