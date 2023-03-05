@@ -54,6 +54,7 @@ router.get('/start', async (req, res) => {
 router.get('/ranks', async (req, res) => {
   try {
     const usersData = await User.findAll({
+      order: [['level', 'DESC']],
       attributes: {
         exclude: ['password'],
         include: [
@@ -64,7 +65,6 @@ router.get('/ranks', async (req, res) => {
             'total_points',
           ],
         ],
-        order: [['level', 'ASC']],
       },
       include: [{ model: Result, attributes: ['points'] }],
     });
