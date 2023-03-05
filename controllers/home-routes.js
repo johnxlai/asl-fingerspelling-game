@@ -36,7 +36,11 @@ router.get('/start', async (req, res) => {
       });
       const user = userData.get({ plain: true });
 
-      res.render('start', { ...user, loggedIn: req.session.loggedIn });
+      res.render('start', {
+        ...user,
+        loggedIn: req.session.loggedIn,
+        user: req.session.user,
+      });
       return;
     }
     //if user not logged in
@@ -50,6 +54,7 @@ router.get('/start', async (req, res) => {
 router.get('/ranks', async (req, res) => {
   try {
     const usersData = await User.findAll({
+      order: [['level', 'DESC']],
       attributes: {
         exclude: ['password'],
         include: [
@@ -60,14 +65,17 @@ router.get('/ranks', async (req, res) => {
             'total_points',
           ],
         ],
-        order: [['level', 'ASC']],
       },
       include: [{ model: Result, attributes: ['points'] }],
     });
 
     //loop thru all users and display user
     const users = usersData.map((user) => user.get({ plain: true }));
-    res.render('ranks', { users, loggedIn: req.session.loggedIn });
+    res.render('ranks', {
+      users,
+      loggedIn: req.session.loggedIn,
+      user: req.session.user,
+    });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -95,7 +103,11 @@ router.get('/profile', async (req, res) => {
       const user = userData.get({ plain: true });
       console.log(user);
 
-      res.render('profile', { ...user, loggedIn: req.session.loggedIn });
+      res.render('profile', {
+        ...user,
+        loggedIn: req.session.loggedIn,
+        user: req.session.user,
+      });
     } else {
       res.render('login');
     }
