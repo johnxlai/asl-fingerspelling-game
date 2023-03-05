@@ -1,30 +1,69 @@
-<section class="flex flex-col w-11/12 lg:10/12">
+<section class="flex flex-col w-11/12 lg:10/12 text-white bg-purple-800/[.06] border-purple-600">
   <div class="text-center">
     <h1
-      class="px-4 py-2 bg-purple-300 text-purple-600 inline-block mb-3 text-3xl font-extrabold before:absolute before:bg-purple-600 relative h1-bg-style">
+      class="px-4 py-2 bg-purple-300 text-purple-600 inline-block mb-3 text-3xl font-extrabold before:absolute before:bg-purple-600 relative h1-bg-style relative -top-[28px]">
       USER PROFILE</h1>
-  </div>v
-  <div class="col-span-full bg-sky-500/[.06] p-3 rounded-lg text-white">
-    <div class="grid grid-cols-3 gap-4">
-      <div class="p-4 rounded-lg shadow-lg">
-        <img src="{{image}}" alt="">
-        <p>User id{{id}}</p>
-        <p>Username {{username}} </p>
-        <p>User Level {{level}}</p>
-        <p>Total player points: {{ total_points }}</p>
-        <p>Game History</p>
-        <ul>
-          {{#each results as |result|}}
-            <li>pts: {{result.points}}</li>
-          {{/each}}
-        </ul>
+  </div>
 
+    <div class="grid grid-cols-3 gap-4">
+
+<div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div class="flex justify-end px-4 pt-4">
+        <button id="dropdownButton" data-dropdown-toggle="dropdown" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
+            <span class="sr-only">Open dropdown</span>
+            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+        </button>
+        <!-- Dropdown menu -->
+        <div id="dropdown" class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+            <ul class="py-2" aria-labelledby="dropdownButton">
+            <li>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Edit</a>
+            </li>
+            <li>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Export Data</a>
+            </li>
+            <li>
+                <a href="#" class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
+            </li>
+            </ul>
+        </div>
+    </div>
+    <div class="flex flex-col items-center pb-10">
+        <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="/docs/images/people/profile-picture-3.jpg" alt="Bonnie image"/>
+        <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie Green</h5>
+        <span class="text-sm text-gray-500 dark:text-gray-400">Visual Designer</span>
+        <div class="flex mt-4 space-x-3 md:mt-6">
+            <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add friend</a>
+            <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">Message</a>
+        </div>
+    </div>
+</div>
+
+      <div class="p-4 rounded-lg shadow-lg">
+       <p>User id{{id}}</p>
+        <img src="{{image}}" alt="" class="h-auto w-[200px] max-w-full rounded-full">
+      </div>
+      <div>
+        <div class="flex flex-wrap border">
+          <div class="rounded-l-lg"><p>Username </p></div>
+          <div class="rounded-r-lg">{{username}}</div>
+        </div>
+
+
+                <p>User Level {{level}}</p>
+                <p>Total player points: {{ total_points }}</p>
+                <p>Game History</p>
+                <ul>
+                  {{#each results as |result|}}
+                  <li>pts: {{result.points}}</li>
+                  {{/each}}
+                </ul>
       </div>
     </div>
-  </div>
 
   <form class="mt-4" action="/api/users/set-img" method="POST" enctype="multipart/form-data">
     <div class="form-group">
+      <label for="update-photo">Upload Photo</label>
       <input type="file" name="file" id="input-files" class="form-control-file border" />
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
