@@ -1,4 +1,4 @@
-<section class="flex flex-col w-11/12 lg:w-10/12 text-white bg-purple-800/[.06]">
+<section class="flex flex-col w-11/12 lg:w-10/12 text-white bg-purple-800/[.06] border-purple-600">
 
   <div class="text-center">
     <h1 class="px-4 py-2 bg-purple-300 text-purple-600 inline-block mb-3 text-3xl font-extrabold before:absolute before:bg-purple-600 relative h1-bg-style relative -top-[28px]">Level 1</h1>
@@ -7,12 +7,11 @@
     <button class="start-game mt-4 btn bg-green-400 font-['Tilt_Warp'] hover:bg-green-600">START</button>
   </div>
 
-  <div id="question-frame" class="main-game hidd mb-4 w-full p-3 rounded-lg col-span-full p-3 rounded-lg text-white">
-    <div class="text-center">
+  <div id="question-frame" class="main-game hidd w-full px-3 rounded-lg text-white text-center">
       <div id="feedback"></div>
       {{!-- <div>Questions Number: <span id="qc"></span></div> --}}
       <div>POINTS: <span id="points-display"></span></div>
-    </div>
+
     <div class="">
       <div id="" class="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         <img id="image-0" src="" alt="letter 0">
@@ -22,10 +21,11 @@
       </div>
 
         {{!-- <div class="timer">Time Left: 5</div> --}}
-        <form id="game-form" class="text-black flex flex-col justify-center items-center relative">
+        <form id="game-form" class="text-black flex flex-wrap justify-center items-center mb-3">
           {{!-- <label for="input" class="text-white text-md p-2 bg-purple-600 text-center inline-block rounded-md ml-0 relative z-1 top-[12px]">User Input</label> --}}
-          <input type="text" id="answer-input" class="answer h-[90px] block w-50 rounded-md py-3 px-4 bg-purple-100 text-purple-600 font-semibold text-center" name="answer" placeholder="User Input">
-          <button type="submit" class="btn bg-green-400 text-neutral-800 font-['Tilt_Warp'] hover:bg-green-600 relative -top-[20px] text-2xl rounded-full px-5 py-2">Submit</button>
+          <input type="text" id="answer-input" class="answer block w-50 rounded-l-lg py-3 px-4 bg-purple-100 text-purple-600 font-semibold text-center h-[50px]" name="answer" placeholder="User Input">
+
+          <button type="submit" class="bg-green-400 text-neutral-800 font-['Tilt_Warp'] hover:bg-green-600 hover:text-white h-[50px] rounded-r-lg px-3 py-1">Submit</button>
         </form>
 
               <div class="user-info mb-8 flex flex-wrap justify-center items-center">
