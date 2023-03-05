@@ -5,9 +5,10 @@
       RANKING</h1>
   </div>
   <div class="col-span-full bg-sky-500/[.06] p-3 rounded-lg text-white">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {{#each users as |user|}}
+    <div class="flex flex-col gap-4">
+      {{#each users as |user userRank|}}
         {{> rank-details}}
+
       {{/each}}
     </div>
   </div>
