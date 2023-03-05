@@ -11,15 +11,24 @@
   {{/if}}
 
   <h5 class="mb-2">Are you ready to play?</h5>
-  <div class="flex gap-5">
+  <div class="flex justify-center gap-5">
     <a class="btn text-neutral-800 bg-green-400 font-['Tilt_Warp'] mt-3" href="/start">
       <p>LEVEL 1</p>
     </a>
-    <a class="btn text-neutral-800 bg-green-900 font-['Tilt_Warp'] mt-3 pointer-events-none" href="/start">
+    {{#if user.superuser }}
+    <a class="btn text-neutral-800 bg-green-400 font-['Tilt_Warp'] mt-3" href="/start">
       <p>LEVEL 2</p>
     </a>
-    <a class="btn text-neutral-800 bg-green-900 font-['Tilt_Warp'] mt-3 pointer-events-none" href="/start">
+    <a class="btn text-neutral-800 bg-green-400 font-['Tilt_Warp'] mt-3" href="/start">
       <p>LEVEL 3</p>
     </a>
+    {{ else }}
+        <a class="btn text-neutral-800 bg-green-900 font-['Tilt_Warp'] mt-3 pointer-events-none" href="/start">
+          <p>LEVEL 2</p>
+        </a>
+        <a class="btn text-neutral-800 bg-green-900 font-['Tilt_Warp'] mt-3 pointer-events-none" href="/start">
+          <p>LEVEL 3</p>
+        </a>
+    {{/if }}
   </div>
 </section>
