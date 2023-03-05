@@ -1,30 +1,20 @@
-<section class="flex flex-col w-11/12 lg:w-10/12 text-white">
-  <div class="user-info mb-8">
-
-    {{#if loggedIn}}
-      <h1>Have Fun <span class="uppercase">{{ username }}</span></h1>
-      <p>Level {{ level }}</p>
-      <p>Total player points: <span class="user-existing-pts">{{ total_points }}</span></p>
-    {{ else }}
-      <span class="user-existing-pts hidden">0</span>
-    {{/if}}
-  </div>
+<section class="flex flex-col w-11/12 lg:w-10/12 text-white bg-purple-800/[.06]">
 
   <div class="text-center">
-    <h1 class="px-4 py-2 bg-purple-300 text-purple-600 inline-block mb-3 text-3xl font-extrabold before:absolute before:bg-purple-600 relative h1-bg-style">Level 1</h1>
+    <h1 class="px-4 py-2 bg-purple-300 text-purple-600 inline-block mb-3 text-3xl font-extrabold before:absolute before:bg-purple-600 relative h1-bg-style relative -top-[28px]">Level 1</h1>
   </div>
   <div class="text-center">
     <button class="start-game mt-4 btn bg-green-400 font-['Tilt_Warp'] hover:bg-green-600">START</button>
   </div>
 
-  <div id="question-frame" class="main-game bg-purple-800 hidd mb-4 w-full p-3 rounded-lg">
+  <div id="question-frame" class="main-game hidd mb-4 w-full p-3 rounded-lg col-span-full p-3 rounded-lg text-white">
     <div class="text-center">
       <div id="feedback"></div>
-      <div>Questions Number: <span id="question-num"></span></div>
+      {{!-- <div>Questions Number: <span id="qc"></span></div> --}}
       <div>POINTS: <span id="points-display"></span></div>
     </div>
-
-      <div id="" class="bg-purple-300 grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="">
+      <div id="" class="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         <img id="image-0" src="" alt="letter 0">
         <img id="image-1" src="" alt="letter 1">
         <img id="image-2" src="" alt="letter 2">
@@ -33,11 +23,29 @@
 
         {{!-- <div class="timer">Time Left: 5</div> --}}
         <form id="game-form" class="text-black flex flex-col justify-center items-center relative">
-          <label for="input" class="text-white bg-purple-600 text-center inline-block py-2 px-3 rounded-full ml-0 relative z-1 top-[12px]"><h6>User Input</h6></label>
-          <input type="text" id="answer-input" class="answer h-[90px] block w-50 rounded-full py-3 px-4 text-purple-600 font-semibold text-center" name="answer">
-          <button type="submit" class="btn bg-green-400 text-neutral-800 font-['Tilt_Warp'] hover:bg-green-600 relative -top-[20px] text-2xl rounded-full  px-5 py-2">Submit</button>
+          {{!-- <label for="input" class="text-white text-md p-2 bg-purple-600 text-center inline-block rounded-md ml-0 relative z-1 top-[12px]">User Input</label> --}}
+          <input type="text" id="answer-input" class="answer h-[90px] block w-50 rounded-md py-3 px-4 bg-purple-100 text-purple-600 font-semibold text-center" name="answer" placeholder="User Input">
+          <button type="submit" class="btn bg-green-400 text-neutral-800 font-['Tilt_Warp'] hover:bg-green-600 relative -top-[20px] text-2xl rounded-full px-5 py-2">Submit</button>
         </form>
+
+              <div class="user-info mb-8 flex flex-wrap justify-center items-center">
+                {{#if loggedIn}}
+                {{!-- <span class="text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full bg-purple-300 text-purple-900">
+                  Have fun {{ username }}</span>
+                <span> --}}
+
+                  <span class="text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full bg-purple-900 text-purple-300">
+                    Player Level: {{ level }}</span>
+
+                  <span class="text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full bg-purple-900 text-purple-300">
+                    Total player points: <span class="user-existing-pts">{{ total_points }}</span></span>
+                </span>
+                {{ else }}
+                <span class="user-existing-pts hidden">0</span>
+                {{/if}}
+              </div>
     </div>
+  </div>
 
 </section>
 

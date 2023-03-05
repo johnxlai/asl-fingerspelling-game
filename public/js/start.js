@@ -3,7 +3,7 @@ const gameForm = document.getElementById('game-form');
 const answerInput = document.getElementById('answer-input');
 const pointsDisplay = document.getElementById('points-display');
 let feedback = document.getElementById('feedback');
-const questionNum = document.getElementById('question-num');
+// const questionNum = document.getElementById('question-num');
 const questionsFrame = document.getElementById('question-frame');
 const userExistingPts =
   document.querySelector('.user-existing-pts').innerHTML || 0;
@@ -57,7 +57,7 @@ function displayWord(word) {
   // Split the word into an array of letters
   const letters = word.split('');
 
-  // Loop through the letters array and set the src attribute of each image to the corresponding letter image
+  // Loop through the letters array and set the src attribute of each image to the corresponding lette r image
   for (let i = 0; i < letters.length; i++) {
     const image = document.getElementById('image-' + i);
     image.src = letterImages[letters[i].toLowerCase()];
@@ -65,7 +65,7 @@ function displayWord(word) {
   }
 
   // Update the level display
-  questionNum.textContent = currentWordIndex;
+  // questionNum.textContent = currentWordIndex;
 }
 
 function startGame() {
@@ -87,7 +87,7 @@ function goToNextQuestion() {
 }
 //end of game
 function endGame() {
-  feedback.textContent = `<h3>YOUR FINAL SCORE is ${gamePoints}</h3>`;
+  feedback.textContent = `YOUR FINAL SCORE is ${gamePoints}`;
   console.log(`Final point ${gamePoints}`);
   fetchPoint(gamePoints, userExistingPts);
 }
