@@ -1,40 +1,55 @@
 <section class="flex flex-col w-11/12 lg:10/12">
   <div class="text-center">
-    <h1
-      class="px-4 py-2 bg-purple-300 text-purple-600 inline-block mb-3 text-3xl font-extrabold before:absolute before:bg-purple-600 relative h1-bg-style relative -top-[28px]">
-      USER PROFILE</h1>
+    <h1 class="px-4 py-2 bg-purple-300 text-purple-600 inline-block mb-3 text-3xl font-extrabold before:absolute before:bg-purple-600 relative h1-bg-style relative -top-[28px]"> USER PROFILE</h1>
   </div>
-  <div class="p-3 text-white w-full md:w-10/12  mx-auto">
-    <div class="flex flex-col gap-4">
-      {{#each users as |user userRank|}}
-      {{> rank-details}}
-      {{/each}}
-    </div>
-  </div>
-
-    <div class="grid grid-cols-3 gap-4">
-
-      <div class="p-4 rounded-lg shadow-lg">
-       <p>User id{{id}}</p>
-        <img src="{{image}}" alt="" class="h-auto w-[200px] max-w-full rounded-full">
-      </div>
-      <div>
-        <div class="flex flex-wrap border">
-          <div class="rounded-l-lg"><p>Username </p></div>
-          <div class="rounded-r-lg">{{username}}</div>
+  <div class="p-3 text-white w-full md:w-10/12 mx-auto">
+    <div class="p-3 md:px-7 md:py-3 rounded-lg shadow-lg bg-purple-900/[0.2] flex flex-col">
+        <div>
+          <img src="{{image}}" alt=""
+          class="w-[80px] max-w-full rounded-full mb-3 md:mb-0 border-2 border-solid border-purple-300">
         </div>
 
+        <div class="text-white text-2xl uppercase font-bold mb-2 md:mb-0">
+          {{username}}
+        </div>
+        <div class="flex items-center justify-center mb-3 md:mb-0">
+          <span class="bg-purple-800 text-purple-300 p-1 uppercase font-bold text-sm rounded-l-lg">id</span>
+          <span class="bg-purple-400 text-white p-1 uppercase font-bold text-sm rounded-r-lg">{{id}}</span>
+        </div>
 
-                <p>User Level {{level}}</p>
-                <p>Total player points: {{ total_points }}</p>
-                <p>Game History</p>
-                <ul>
-                  {{#each results as |result|}}
-                  <li>pts: {{result.points}}</li>
-                  {{/each}}
-                </ul>
-      </div>
+        <div class="flex flex-col md:flex-row gap-3 md:gap-6">
+          <div class="grid grid-cols-2 md:grid-cols-4 justify-between items-center gap-3">
+            <div class="p-2 flex flex-col justify-center items-center font-bold text-center">
+              <p class="text-purple-300 mb-2">User Level</p>
+              <p class="text-xl text-white">{{ level }}</p>
+            </div>
+            <div class=" p-2 flex flex-col justify-center items-center font-bold text-center">
+              <p class="text-purple-300 mb-2">Total Games Played: </p>
+              <p class="text-xl text-white">{{ results.length}}</p>
+            </div>
+            <div class="p-2 flex flex-col justify-center items-center font-bold text-center">
+              <p class="text-purple-300 mb-2">Last Game Result : </p>
+              <p class="text-xl text-white">{{#each results as |result|}}
+                {{#if @last}} {{result.points}}{{/if}}
+                {{/each}}</p>
+            </div>
+            <div class="p-2 flex flex-col justify-center items-center font-bold text-center">
+              <p class="text-purple-300 mb-2">Total Player Points: </p>
+              <p class="ce">{{ total_points }}</p>
+            </div>
+            <div class="col-span-full">
+              <p class="text-purple-300 mb-2 font-bold">Game History</p>
+              <ul class="flex flex-wrap gap-5">
+                {{#each results as |result|}}
+                <li class="text-md text-white font-bold">pts: {{result.points}}</li>
+                {{/each}}
+              </ul>
+            </div>
+
+          </div>
+        </div>
     </div>
+  </div>
 
   <form class="mt-4" action="/api/users/set-img" method="POST" enctype="multipart/form-data">
     <div class="form-group">
