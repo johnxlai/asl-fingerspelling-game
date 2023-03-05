@@ -1,7 +1,7 @@
 <section class="flex flex-col w-11/12 lg:w-10/12 text-white bg-purple-800/[.06] border-purple-600">
 
   <div class="text-center">
-    <h1 class="px-4 py-2 bg-purple-300 text-purple-600 inline-block mb-3 text-3xl font-extrabold before:absolute before:bg-purple-600 relative h1-bg-style relative -top-[28px]">Level 1</h1>
+    <h1 class="px-4 py-2 bg-purple-300 text-purple-600 inline-block text-3xl font-extrabold before:absolute before:bg-purple-600 relative h1-bg-style relative -top-[28px]">Level 1</h1>
   </div>
   <div class="text-center">
     <button class="start-game mt-4 btn bg-green-400 font-['Tilt_Warp'] hover:bg-green-600">START</button>
@@ -21,7 +21,7 @@
       </div>
 
         {{!-- <div class="timer">Time Left: 5</div> --}}
-        <form id="game-form" class="text-black flex flex-wrap justify-center items-center mb-3">
+        <form id="game-form" class="text-black flex flex-wrap justify-center items-center mb-4">
           {{!-- <label for="input" class="text-white text-md p-2 bg-purple-600 text-center inline-block rounded-md ml-0 relative z-1 top-[12px]">User Input</label> --}}
           <input type="text" id="answer-input" class="answer block w-50 rounded-l-lg py-3 px-4 bg-purple-100 text-purple-600 font-semibold text-center h-[50px]" name="answer" placeholder="User Input">
 
@@ -30,14 +30,14 @@
 
               <div class="user-info mb-8 flex flex-wrap justify-center items-center">
                 {{#if loggedIn}}
-                {{!-- <span class="text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full bg-purple-300 text-purple-900">
+                {{!-- <span class="text-xs px-2.5 py-0.5 rounded-l-lg bg-purple-900 text-purple-300 font-bold">
                   Have fun {{ username }}</span>
                 <span> --}}
 
-                  <span class="text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full bg-purple-900 text-purple-300">
+                  <span class="text-xs font-medium px-2.5 py-0.5  mr-2 rounded-full bg-purple-900 text-purple-300">
                     Player Level: {{ level }}</span>
 
-                  <span class="text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full bg-purple-900 text-purple-300">
+                  <span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-purple-900 text-purple-300">
                     Total player points: <span class="user-existing-pts">{{ total_points }}</span></span>
                 </span>
                 {{ else }}
