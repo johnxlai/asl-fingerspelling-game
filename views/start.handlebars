@@ -1,13 +1,14 @@
-<section class="flex flex-col w-11/12 lg:w-10/12 text-white bg-purple-800/[.06] border-purple-600">
+<div class="text-center">
+  <button class="start-game mt-4 btn bg-green-400 font-['Tilt_Warp'] hover:bg-green-600">START</button>
+</div>
 
+<section id="question-frame" class="flex flex-col w-11/12 lg:w-10/12 text-white bg-purple-800/[.06] border-purple-600 hidden">
   <div class="text-center">
     <h1 class="px-4 py-2 bg-purple-300 text-purple-600 inline-block text-3xl font-extrabold before:absolute before:bg-purple-600 relative h1-bg-style relative -top-[28px]">Level 1</h1>
   </div>
-  <div class="text-center">
-    <button class="start-game mt-4 btn bg-green-400 font-['Tilt_Warp'] hover:bg-green-600">START</button>
-  </div>
 
-  <div id="question-frame" class="main-game hidd w-full px-3 rounded-lg text-white text-center">
+
+  <div class="main-game w-full px-3 rounded-lg text-white text-center">
       <div id="feedback"></div>
       {{!-- <div>Questions Number: <span id="qc"></span></div> --}}
       <div>POINTS: <span id="points-display"></span></div>
@@ -30,9 +31,8 @@
 
               <div class="user-info mb-8 flex flex-wrap justify-center items-center">
                 {{#if loggedIn}}
-                {{!-- <span class="text-xs px-2.5 py-0.5 rounded-l-lg bg-purple-900 text-purple-300 font-bold">
-                  Have fun {{ username }}</span>
-                <span> --}}
+                  <span class="text-xs font-medium px-2.5 py-0.5  mr-2 rounded-full bg-purple-900 text-purple-300">
+                    Have fun {{ username }}</span>
 
                   <span class="text-xs font-medium px-2.5 py-0.5  mr-2 rounded-full bg-purple-900 text-purple-300">
                     Player Level: {{ level }}</span>
