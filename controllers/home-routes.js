@@ -114,31 +114,12 @@ async function getUser(id, req, res, current_user) {
 }
 
 // Profile page (with Auth)
-// router.get('/profile', async (req, res) => {
-//   let user;
-//   if(req.session.user){
-//     user = user
-//   }
-//   try {
-//     if (user) {
-//       getUser(user.id, req, res);
-//     } else {
-//       res.render('login');
-//     }
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
-
-// Profile page (with Auth)
 router.get('/profile', async (req, res) => {
   let user;
-  if(req.session.user){
-    user = user
+  if (req.session.user) {
+    user = user;
   }
   try {
-<<<<<<< HEAD
     if (req.session.user) {
       const userData = await User.findByPk(req.session.user.id, {
         attributes: {
@@ -163,10 +144,6 @@ router.get('/profile', async (req, res) => {
         loggedIn: req.session.loggedIn,
         user: req.session.user,
       });
-=======
-    if (user) {
-      getUser(user.id, req, res);
->>>>>>> main
     } else {
       res.render('login');
     }
