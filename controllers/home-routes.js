@@ -156,7 +156,7 @@ router.get('/profile', async (req, res) => {
 router.get('/profile/:id', async (req, res) => {
   let user;
   if (req.session.user) {
-    user = user;
+    user = req.session.user;
   }
   try {
     if (user && user.superuser) {
