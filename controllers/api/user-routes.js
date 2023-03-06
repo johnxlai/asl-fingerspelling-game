@@ -4,25 +4,21 @@ const fs = require('fs');
 const upload = require('../../middleware/upload');
 
 function addUser(request, response) {
-  User.create(request.body).then((user) => {
-    const session = request.session;
-    session.save(() => {
-      session.user = user;
+  User.create(request.body)
+    .then((user) => {
+      const session = request.session;
+      session.save(() => {
+        session.user = user;
 
-      session.loggedIn = true;
-      response.json(user);
+        session.loggedIn = true;
+        response.json(user);
+      });
+    })
+    .catch((error) => {
+      response
+        .status(400)
+        .json({ error: `User ${request.body.username} already exists` });
     });
-<<<<<<< Updated upstream
-  })
-  .catch((error) => {
-    response.status(400).json({error: `User ${request.body.username} already exists`});
-  });
-=======
-  });
-  //.catch((error) => {
-  // response.status(400).json({error: `User ${request.body.username} already exists`});
-  //});
->>>>>>> Stashed changes
 }
 
 function getLoginPage(request, response) {
@@ -90,14 +86,6 @@ function deleteMyself(request, response) {
   response.redirect('/api/users/logout');
 }
 
-<<<<<<< Updated upstream
-function deleteUser(request, response){
-    const session = request.session
-    if(session && session.user && session.user.superuser){
-        (async () => await User.destroy({where: {id: request.params.id}}))()
-    }
-    response.render('homepage', { loggedIn: true, user: request.session.user });
-=======
 function deleteUser(request, response) {
   const session = request.session;
   if (session && session.user && session.user.superuser) {
@@ -106,7 +94,6 @@ function deleteUser(request, response) {
     })();
   }
   response.redirect('/ranks');
->>>>>>> Stashed changes
 }
 
 // Routes
