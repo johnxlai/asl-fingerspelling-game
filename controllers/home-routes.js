@@ -133,9 +133,6 @@ async function getUser(id, req, res) {
 router.get('/profile', async (req, res) => {
   try {
     if (req.session.user) {
-<<<<<<< Updated upstream
-      getUser(req.session.user.id, req, res);
-=======
       const userData = await User.findByPk(req.session.user.id, {
         attributes: {
           exclude: ['password'],
@@ -159,7 +156,6 @@ router.get('/profile', async (req, res) => {
         loggedIn: req.session.loggedIn,
         user: req.session.user,
       });
->>>>>>> Stashed changes
     } else {
       res.render('login');
     }
@@ -170,13 +166,10 @@ router.get('/profile', async (req, res) => {
 });
 
 router.get('/profile/:id', async (req, res) => {
-<<<<<<< Updated upstream
-=======
   let user;
   if (req.session.user) {
     user = user;
   }
->>>>>>> Stashed changes
   try {
     if (req.session.user && req.session.user.superuser) {
       getUser(req.params.id, req, res);
