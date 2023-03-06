@@ -1,56 +1,118 @@
-# American Sign Langauge Game (Fingerspelling game)
-![License Badge](https://img.shields.io/badge/license-MIT-brightgreen)
+# asl-game
 
-## User Story
-As a freelance web developer, I want to generate a simple logo for my projects, so that I dont have to pay a graphic designer. (You really should hire a graphic designer if you want a professional designed logo)
+University of Toronto - Project 02 - Team 06 - asl-game app
 
 ## Description
-* This is a command-line application, which will generated a logo svg file. This app will prompt the user for text (up to 3 characters long), a text colour and a background colour for the logo. All colour must be a css named value or in hex code. The user can choose from circle, triangle or square as the shape of the logo.
+
+This is an application for learning how to finger spell with American sign language.  The user will be prompt with images of signs in alphabet which will make up of words. And user will then insert an answer to try to guess the word that is shown in sign language. The user will then get a message rather they got it right or wrong. If they get it right they get 10points per question.​
+
+
+
+Below is the image of the application.
+![Homepage](./public/image/appimage/ASL%20Fingerspelling%20Game%20-%20Cent%20Browser%202023-03-06%2010_59_55%20AM.png)
+
+Below is the image of the application when the user can see the ranking.
+![Ranking page](./public/image/appimage/ASL%20Fingerspelling%20Game%20-%20Cent%20Browser%202023-03-06%2011_01_06%20AM.png)
+
+Below is the image of the application when user can login
+![Login page](./public/image/appimage/ASL%20Fingerspelling%20Game%20-%20Cent%20Browser%202023-03-06%2011_01_21%20AM.png)
+
+Below is the image of the application when user can sign up
+![Mars Exploration](./public/image/appimage/ASL%20Fingerspelling%20Game%20-%20Cent%20Browser%202023-03-06%2011_01_53%20AM.png)
+
+Below is the image of welcome page to the spelling game 
+![Captian's log](./public/image/appimage/ASL%20Fingerspelling%20Game%20-%20Cent%20Browser%202023-03-06%2011_09_12%20AM.png)
+
 
 ## Table of Contents
-- [Installation](#installation)
-- [Usage](#usage)
-- [How to Contribute](#how-to-contribute)
-- [Questions](#questions)
-- [License](#license)
+
+- Installation
+- Functionality
+- Usage
+- Credits
+- License
 
 ## Installation
-* In the root directory you want to run "npm i" to install all the required packages.
 
-npm start - node server.js
-npm run watch - nodemon
-npm run tailwind - this compliee tailwind.css file to style.css in the public folder
+No installation requirements. [Click here](https://asl-fingerspelling-game.herokuapp.com/) to open the webpage in your default browser.
 
-npm run seed (to seed data);
+
+
+## Technologies 
+
+The following discusses at a high level about some of the features of the website. Detailed code implementation can be found as comments in the JS files.
+
+### Tailwind CSS [link](https://tailwindcss.com/)
+
+### express js [link](https://expressjs.com/)
+
+### handlebars​ [link](https://handlebarsjs.com/)
+
+### multer [link](https://www.npmjs.com/package/multer)
+
+### Tailwind CSS [link](https://postcss.org/)
+
+### mysql [link](https://tailwindcss.com/
+
+### sequelize​ [link](https://sequelize.org/)
+
+### Post CSS [link](https://postcss.org/)
+
+
+
 
 ## Usage
-* User can type "npm start" or "node index.js" to start the user prompt in the root directory.
-* The user must pass all the requirements of making the svg logo, otherwise it will prompt a corresponding error message.
-* Upon finishing all the questions, a svg file will be generated called logo.svg in the dist folder.
 
-* This project uses the npm inquirer, is-css3-color and jest for testing.
+### To Access the Application
+
+- [Click here](https://asl-fingerspelling-game.herokuapp.com/) to visit the application.
+
+
+
+#### To login in the application
+
+- click login button, login page will appear.
+- Fill in the required parameters to login.
+- Enter username and password.
+- Click on the "Start Login" button.
+- You will be logged into your account.
+
+#### To sign up in the application
+
+- click sign up button, sign up page will appear.
+- Fill in the required parameters to sign up.
+- Enter username and password.
+- Click on the "Start sign up" button.
+- You will be create you a FINGER SPELL account.
+
+
+
+### For viewing the responsiveness of the website:
+
+#### Method 1:
+
+- Use separate computer, tablet, or phone to access the website
+
+#### Method 2:
+
+- Access the web page via web browser.
+- Right click on the page and select "inspect" to open browser's developer tools
+- Enable the device toolbar if not already enabled
+- Use the device toolbar on the right to grow or shrink the viewable area and see how items change.
+
+
+## Credits
+
+- Lai John.
+- Volvash Yaroslav.
+- Fabian Mukungu.
 
 
 ## License
-* This project is under the MIT license.
-* If you want to get more details about the license, please visit [Choose License](https://choosealicense.com "Choose License")
+License: MIT
 
-## How to Contribute
-* Feel free to contact via email or github or fork my repo and request for pull request!
-
-## Tests
-* Its been tested for correct user input, logo text must not exceed 3 characters and must contain atleast 1 character.
-* It must be a vaild CSS named value or hex code to set the text colour of the logo and the background colour of the logo.
-* These tests must be passed in order for the logo.svg file to be generated.
-
-## Questions
-* Please contact me via my [Github Username](https://github.com/johnxlai)
-
-* You can reach me with additional questions <a href="mailto:lai.john.py@gmail.com">lai.john.py@gmail.com</a>
+This project is licensed under MIT, for more information please visit MIT License (https://opensource.org/licenses/MIT.)
 
 
-## Repo
-https://github.com/johnxlai/svg-logo-maker
-## WalkThrough Video
-https://drive.google.com/file/d/1zKDm3_RNRF0xhl7HIcSfiNnQ_BCQhymY/view
 
+![Spell finger](./public/image/finger-spell-logo.svg)
