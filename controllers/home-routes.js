@@ -55,7 +55,7 @@ router.get('/ranks', async (req, res) => {
   const session = req.session;
   let is_superuser = false;
   if (session && session.user) {
-    is_superuser = session.user.is_superuser;
+    is_superuser = session.user.superuser;
   }
   // try {
   let usersData = [{ is_superuser: is_superuser }];
