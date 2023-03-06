@@ -13,9 +13,9 @@ function addUser(request, response) {
       response.json(user);
     });
   })
-  .catch((error) => {
-    response.status(400).json({error: `User ${request.body.username} already exists`});
-  });
+  //.catch((error) => {
+   // response.status(400).json({error: `User ${request.body.username} already exists`});
+  //});
 }
 
 function getLoginPage(request, response) {
@@ -86,9 +86,9 @@ function deleteMyself(request, response){
 function deleteUser(request, response){
     const session = request.session
     if(session && session.user && session.user.superuser){
-        (async () => await User.destroy({where: {id: request.params.id}}))()
+        (async () => {await User.destroy({where: {id: request.params.id}})})()
     }
-    response.render('homepage', { loggedIn: true, user: request.session.user });
+    response.redirect('/ranks')
 }
 
 // Routes
