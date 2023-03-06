@@ -1,5 +1,4 @@
 # asl-game
-# asl-game
 
 University of Toronto - Project 02 - Team 06 - asl-game app
 
@@ -10,19 +9,19 @@ This is an application for learning how to finger spell with American sign langu
 
 
 Below is the image of the application.
-![Homepage](./public/image/appimage/ASL%20Fingerspelling%20Game%20-%20Cent%20Browser%202023-03-06%2010_59_55%20AM.png)
+![Homepage](./public/image/FingerSpellimg/ASL%20Fingerspelling%20Game%20-%20Cent%20Browser%202023-03-06%2010_59_55%20AM.png)
 
 Below is the image of the application when the user can see the ranking.
-![Ranking page](./public/image/appimage/ASL%20Fingerspelling%20Game%20-%20Cent%20Browser%202023-03-06%2011_01_06%20AM.png)
+![Ranking page](./public/image/FingerSpellimg/ASL%20Fingerspelling%20Game%20-%20Cent%20Browser%202023-03-06%2011_01_06%20AM.png)
 
 Below is the image of the application when user can login
-![Login page](./public/image/appimage/ASL%20Fingerspelling%20Game%20-%20Cent%20Browser%202023-03-06%2011_01_21%20AM.png)
+![Login page](./public/image/FingerSpellimg/ASL%20Fingerspelling%20Game%20-%20Cent%20Browser%202023-03-06%2011_01_21%20AM.png)
 
 Below is the image of the application when user can sign up
-![Mars Exploration](./public/image/appimage/ASL%20Fingerspelling%20Game%20-%20Cent%20Browser%202023-03-06%2011_01_53%20AM.png)
+![Mars Exploration](./public/image/FingerSpellimg/ASL%20Fingerspelling%20Game%20-%20Cent%20Browser%202023-03-06%2011_01_53%20AM.png)
 
 Below is the image of welcome page to the spelling game
-![Captian's log](./public/image/appimage/ASL%20Fingerspelling%20Game%20-%20Cent%20Browser%202023-03-06%2011_09_12%20AM.png)
+![Captian's log](./public/image/FingerSpellimg/ASL%20Fingerspelling%20Game%20-%20Cent%20Browser%202023-03-06%2011_09_12%20AM.png)
 
 
 ## Table of Contents
