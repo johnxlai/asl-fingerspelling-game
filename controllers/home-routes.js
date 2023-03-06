@@ -78,17 +78,19 @@ router.get('/ranks', async (req, res) => {
   //loop thru all users and display user
   let users = usersData_.map((user) => user.get({ plain: true }));
   users = usersData.concat(users);
+
   res.render('ranks', {
     users,
     loggedIn: req.session.loggedIn,
     user: req.session.user,
   });
+
   // } catch (err) {
   //   res.status(500).json(err);
   // }
 });
 
-async function getUser(id, req, res) {
+async function getUser(id, req, res, current_user) {
   const userData = await User.findByPk(id, {
     attributes: {
       exclude: ['password'],
@@ -131,7 +133,12 @@ async function getUser(id, req, res) {
 
 // Profile page (with Auth)
 router.get('/profile', async (req, res) => {
+  let user;
+  if(req.session.user){
+    user = user
+  }
   try {
+<<<<<<< HEAD
     if (req.session.user) {
       const userData = await User.findByPk(req.session.user.id, {
         attributes: {
@@ -156,6 +163,10 @@ router.get('/profile', async (req, res) => {
         loggedIn: req.session.loggedIn,
         user: req.session.user,
       });
+=======
+    if (user) {
+      getUser(user.id, req, res);
+>>>>>>> main
     } else {
       res.render('login');
     }
@@ -171,10 +182,10 @@ router.get('/profile/:id', async (req, res) => {
     user = user;
   }
   try {
-    if (req.session.user && req.session.user.superuser) {
+    if (user && user.superuser) {
       getUser(req.params.id, req, res);
     } else {
-      res.render('login');
+      res.redirect('/ranks');
     }
   } catch (err) {
     console.log(err);
