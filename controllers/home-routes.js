@@ -116,12 +116,34 @@ async function getUser(id, req, res, current_user) {
 // Profile page (with Auth)
 router.get('/profile', async (req, res) => {
   let user;
-  if(req.session.user){
-    user = user
+  if (req.session.user) {
+    user = user;
   }
   try {
-    if (user) {
-      getUser(user.id, req, res);
+    if (req.session.user) {
+      const userData = await User.findByPk(req.session.user.id, {
+        attributes: {
+          exclude: ['password'],
+          include: [
+            [
+              sequelize.literal(
+                `(SELECT SUM(points) FROM result WHERE result.user_id = user.id )`
+              ),
+              'total_points',
+            ],
+          ],
+        },
+        include: [{ model: Result, attributes: ['points'] }],
+      });
+
+      const user = userData.get({ plain: true });
+      console.log(user);
+
+      res.render('profile', {
+        ...user,
+        loggedIn: req.session.loggedIn,
+        user: req.session.user,
+      });
     } else {
       res.render('login');
     }
@@ -133,8 +155,8 @@ router.get('/profile', async (req, res) => {
 
 router.get('/profile/:id', async (req, res) => {
   let user;
-  if(req.session.user){
-     user = user
+  if (req.session.user) {
+    user = req.session.user;
   }
   try {
     if (user && user.superuser) {

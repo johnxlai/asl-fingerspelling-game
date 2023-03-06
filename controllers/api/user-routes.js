@@ -4,18 +4,21 @@ const fs = require('fs');
 const upload = require('../../middleware/upload');
 
 function addUser(request, response) {
-  User.create(request.body).then((user) => {
-    const session = request.session;
-    session.save(() => {
-      session.user = user;
+  User.create(request.body)
+    .then((user) => {
+      const session = request.session;
+      session.save(() => {
+        session.user = user;
 
-      session.loggedIn = true;
-      response.json(user);
+        session.loggedIn = true;
+        response.json(user);
+      });
+    })
+    .catch((error) => {
+      response
+        .status(400)
+        .json({ error: `User ${request.body.username} already exists` });
     });
-  })
-  //.catch((error) => {
-   // response.status(400).json({error: `User ${request.body.username} already exists`});
-  //});
 }
 
 function getLoginPage(request, response) {
@@ -74,28 +77,30 @@ function setImg(request, response) {
   response.render('homepage', { loggedIn: true, user: request.session.user });
 }
 
-
-function deleteMyself(request, response){
-    const session = request.session
-    if(session && session.user){
-        (async () => await User.destroy({where: {id: request.session.user.id}}))()
-    }
-    response.redirect('/api/users/logout')
+function deleteMyself(request, response) {
+  const session = request.session;
+  if (session && session.user) {
+    (async () =>
+      await User.destroy({ where: { id: request.session.user.id } }))();
+  }
+  response.redirect('/api/users/logout');
 }
 
-function deleteUser(request, response){
-    const session = request.session
-    if(session && session.user && session.user.superuser){
-        (async () => {await User.destroy({where: {id: request.params.id}})})()
-    }
-    response.redirect('/ranks')
+function deleteUser(request, response) {
+  const session = request.session;
+  if (session && session.user && session.user.superuser) {
+    (async () => {
+      await User.destroy({ where: { id: request.params.id } });
+    })();
+  }
+  response.redirect('/ranks');
 }
 
 // Routes
 
-router.use('/delete-myself', deleteMyself)
+router.use('/delete-myself', deleteMyself);
 
-router.use('/delete/:id', deleteUser)
+router.use('/delete/:id', deleteUser);
 
 router.get('/login', getLoginPage);
 

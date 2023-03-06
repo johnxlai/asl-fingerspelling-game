@@ -1,7 +1,5 @@
-{{!-- <p id="superuser">{{is_superuser}}</p> --}}
-    {{#if superuser }}
-    test
-    {{/if}}
+<p id="superuser">{{is_superuser}}</p>
+
 {{#if id}}
 <div class="p-3 md:px-7 md:py-3 rounded-lg shadow-lg bg-purple-900/[0.2]">
   <div class="text-purple-300 flex flex-col xl:flex-row items-center justify-between">
@@ -11,7 +9,7 @@
           <a href="/profile/{{id}}"><img src="{{image}}" alt=""
               class="w-[80px] max-w-full rounded-full mb-3 md:mb-0 border-2 border-solid border-purple-300"></a>
           {{#unless superuser}}
-            <a href="/api/users/delete/{{id}}", class="btn bg-rose-700 text-white text-xs p-1 font-bold remove"></a>
+            <a href="/api/users/delete/{{id}}" class="btn bg-rose-700 text-white text-xs p-1 font-bold remove"></a>
           {{/unless}}
         </div>
 
