@@ -78,7 +78,13 @@ router.get('/ranks', async (req, res) => {
   //loop thru all users and display user
   let users = usersData_.map((user) => user.get({ plain: true }));
   users = usersData.concat(users);
-  res.render('ranks', {users, loggedIn: req.session.loggedIn});
+
+  res.render('ranks', {
+    users,
+    loggedIn: req.session.loggedIn,
+    user: req.session.user,
+  });
+
   // } catch (err) {
   //   res.status(500).json(err);
   // }
@@ -100,7 +106,11 @@ async function getUser(id, req, res, current_user) {
     include: [{ model: Result, attributes: ['points'] }],
   });
   const user = userData.get({ plain: true });
-  res.render('profile', { ...user, loggedIn: req.session.loggedIn });
+  res.render('profile', {
+    ...user,
+    loggedIn: req.session.loggedIn,
+    user: req.session.user,
+  });
 }
 
 // Profile page (with Auth)
