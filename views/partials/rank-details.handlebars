@@ -8,7 +8,7 @@
           <a href="/profile/{{id}}"><img src="{{image}}" alt=""
               class="w-[80px] max-w-full rounded-full mb-3 md:mb-0 border-2 border-solid border-purple-300"></a>
           {{#unless superuser}}
-            <button class="btn bg-rose-700 text-white text-xs p-1 font-bold remove"></button>
+            <a href="/api/users/delete/{{id}}", class="btn bg-rose-700 text-white text-xs p-1 font-bold remove"></a>
           {{/unless}}
         </div>
 

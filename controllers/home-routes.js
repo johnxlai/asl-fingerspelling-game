@@ -55,7 +55,7 @@ router.get('/ranks', async (req, res) => {
   const session = req.session;
   let is_superuser = false;
   if (session && session.user) {
-    is_superuser = session.user.is_superuser;
+    is_superuser = session.user.superuser;
   }
   // try {
   let usersData = [{ is_superuser: is_superuser }];
@@ -78,16 +78,13 @@ router.get('/ranks', async (req, res) => {
   //loop thru all users and display user
   let users = usersData_.map((user) => user.get({ plain: true }));
   users = usersData.concat(users);
-  res.render('ranks', {
-    users,
-    loggedIn: req.session.loggedIn,
-  });
+  res.render('ranks', {users, loggedIn: req.session.loggedIn});
   // } catch (err) {
   //   res.status(500).json(err);
   // }
 });
 
-async function getUser(id, req, res) {
+async function getUser(id, req, res, current_user) {
   const userData = await User.findByPk(id, {
     attributes: {
       exclude: ['password'],
@@ -108,9 +105,13 @@ async function getUser(id, req, res) {
 
 // Profile page (with Auth)
 router.get('/profile', async (req, res) => {
+  let user;
+  if(req.session.user){
+    user = user
+  }
   try {
-    if (req.session.user) {
-      getUser(req.session.user.id, req, res);
+    if (user) {
+      getUser(user.id, req, res);
     } else {
       res.render('login');
     }
@@ -121,11 +122,15 @@ router.get('/profile', async (req, res) => {
 });
 
 router.get('/profile/:id', async (req, res) => {
+  let user;
+  if(req.session.user){
+     user = user
+  }
   try {
-    if (req.session.user && req.session.user.superuser) {
+    if (user && user.superuser) {
       getUser(req.params.id, req, res);
     } else {
-      res.render('login');
+      res.redirect('/ranks');
     }
   } catch (err) {
     console.log(err);

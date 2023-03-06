@@ -1,5 +1,5 @@
 const is_superuser = document.getElementById('superuser');
-console.log(is_superuser);
+
 if (JSON.parse(is_superuser.innerText)) {
   const removeButtons = document.querySelectorAll('.remove');
   for (button of removeButtons) {
