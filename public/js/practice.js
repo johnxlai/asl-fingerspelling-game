@@ -9,19 +9,23 @@ alphabetArray.sort((a, b) => 0.5 - Math.random());
 //Selectors
 const startBtn = document.querySelector('.start-practice');
 const gameSection = document.querySelector('.game-section');
+const img = document.querySelector('.question');
 
+// display first letter
+function displayChar() {
+  console.log(img);
+  const j = 'j';
+  img.src = `image/alphabet/${j}.svg`;
+}
+
+// start button initialiate game start
 // Add event listeners
 startBtn.addEventListener('click', function () {
   this.classList.add('hidden');
   gameSection.classList.remove('hidden');
+  displayChar();
 });
-
-// start button initialiate game start
 
 // start 30 secs count down
 
-// display first letter
-
 // input listen to event for correct or wrong answer
-
-// from a to z
