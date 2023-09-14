@@ -62,7 +62,7 @@ function displayWord(word) {
   // Split the word into an array of letters
   const letters = word.split('');
 
-  // Loop through the letters array and set the src attribute of each image to the corresponding lette r image
+  // Loop through the letters array and set the src attribute of each image to the corresponding letter image
   for (let i = 0; i < letters.length; i++) {
     const image = document.getElementById('image-' + i);
     image.src = letterImages[letters[i].toLowerCase()];
@@ -79,8 +79,6 @@ function startGame() {
   questionsFrame.classList.remove('hidden');
   answerInput.focus();
   displayWord(words[currentWordIndex].word);
-
-  console.log(userExistingPts);
 }
 
 function goToNextQuestion() {
