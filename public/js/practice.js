@@ -2,7 +2,9 @@
 const alphabetArray = Array.from({ length: 26 }, (_, index) =>
   String.fromCharCode(97 + index)
 );
-console.log(alphabetArray);
+
+//randomize the array
+alphabetArray.sort((a, b) => 0.5 - Math.random());
 
 //Selectors
 

@@ -9,15 +9,16 @@
   </div>
 
 
-  <div class="main-game w-full px-3rounded-lg text-white text-center">
+  <div class="main-game w-full px-3 rounded-lg text-white text-center">
+    <div class="text-center">
+      <button class="start-practice my-4 btn bg-green-400 font-['Tilt_Warp'] hover:bg-green-600">START</button>
+    </div>
+
     <div id="feedback"></div>
 
-    <div>
+    <div class="hidden">
       <div class="flex overflow-x-scroll md:grid md:grid-cols-4 md:overflow-hidden gap-4">
         <img id="image-0" src="" alt="letter 0">
-        <img id="image-1" src="" alt="letter 1">
-        <img id="image-2" src="" alt="letter 2">
-        <img id="image-3" src="" alt="letter 3">
       </div>
 
       {{!-- <div class="timer">Time Left: 5</div> --}}
