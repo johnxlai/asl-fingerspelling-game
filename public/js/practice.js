@@ -10,12 +10,25 @@ alphabetArray.sort((a, b) => 0.5 - Math.random());
 const startBtn = document.querySelector('.start-practice');
 const gameSection = document.querySelector('.game-section');
 const img = document.querySelector('.question');
+const gameForm = document.querySelector('.game-form');
+const userInput = document.querySelector('.user-input');
 
 // display first letter
 function displayChar() {
-  console.log(img);
-  const j = 'j';
-  img.src = `image/alphabet/${j}.svg`;
+  img.src = `image/alphabet/${alphabetArray[0]}.svg`;
+  console.log(alphabetArray);
+}
+
+//Loop thru array, pop item once it has been displayed
+for (let i = 0; i < alphabetArray.length; i++) {
+  alphabetArray.shift();
+  console.log(alphabetArray[i]);
+}
+
+// input listen to event for correct or wrong answer
+function grabInput() {
+  const answer = userInput.value.toLowerCase();
+  userInput.value = '';
 }
 
 // start button initialiate game start
@@ -26,6 +39,8 @@ startBtn.addEventListener('click', function () {
   displayChar();
 });
 
+gameForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  grabInput();
+});
 // start 30 secs count down
-
-// input listen to event for correct or wrong answer
