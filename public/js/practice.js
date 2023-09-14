@@ -7,10 +7,14 @@ const alphabetArray = Array.from({ length: 26 }, (_, index) =>
 alphabetArray.sort((a, b) => 0.5 - Math.random());
 
 //Selectors
-
-// functions
+const startBtn = document.querySelector('.start-practice');
+const gameSection = document.querySelector('.game-section');
 
 // Add event listeners
+startBtn.addEventListener('click', function () {
+  this.classList.add('hidden');
+  gameSection.classList.remove('hidden');
+});
 
 // start button initialiate game start
 

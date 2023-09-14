@@ -16,17 +16,16 @@
 
     <div id="feedback"></div>
 
-    <div class="hidden">
+    <div class="game-section hidden">
       <div class="flex overflow-x-scroll md:grid md:grid-cols-4 md:overflow-hidden gap-4">
         <img id="image-0" src="" alt="letter 0">
       </div>
 
       {{!-- <div class="timer">Time Left: 5</div> --}}
       <form id="game-form" class="text-black flex flex-col md:flex-row md:flex-wrap justify-center items-center mb-3">
-
-        <input type="text" id="answer-input"
-          class="answer block w-50  md:rounded-l-lg py-3 px-4 bg-purple-100 text-purple-600 font-semibold text-center h-[50px] mb-2"
-          name="answer" placeholder="User Input" autofocus>
+        <input type="text"
+          class="user-input block w-50  md:rounded-l-lg py-3 px-4 bg-purple-100 text-purple-600 font-semibold text-center h-[50px] mb-2"
+          name="user-input" placeholder="User Input" autofocus>
 
         <button type="submit"
           class="bg-green-400 text-neutral-800 font-['Tilt_Warp'] hover:bg-green-600 hover:text-white h-[50px] md:rounded-r-lg px-3 py-1 mb-2">Submit</button>
