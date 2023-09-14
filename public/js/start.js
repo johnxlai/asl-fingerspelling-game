@@ -57,6 +57,11 @@ const words = [
 // Define a variable to keep track of the current word index
 let currentWordIndex = 0;
 
+//Shuffle array before start of game
+function shuffleArr(arr) {
+  arr.sort((a, b) => 0.5 - Math.random());
+}
+
 // Function to display a word and its letters
 function displayWord(word) {
   // Split the word into an array of letters
@@ -78,6 +83,7 @@ function startGame() {
   startGameBtn.classList.add('hidden');
   questionsFrame.classList.remove('hidden');
   answerInput.focus();
+  shuffleArr(words);
   displayWord(words[currentWordIndex].word);
 }
 
@@ -92,7 +98,6 @@ function goToNextQuestion() {
 //end of game
 function endGame() {
   feedback.textContent = `YOUR FINAL SCORE is ${gamePoints}`;
-  console.log(`Final point ${gamePoints}`);
   fetchPoint(gamePoints, userExistingPts);
 }
 
