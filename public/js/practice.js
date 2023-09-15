@@ -13,18 +13,19 @@ const gameSection = document.querySelector('.game-section');
 const img = document.querySelector('.question');
 const gameForm = document.querySelector('.game-form');
 const userInput = document.querySelector('.user-input');
+const endGameEl = document.querySelector('.end-game');
 
 // display first letter
 function displayChar() {
+  if (!alphabetArray.length) {
+    endGame();
+    return;
+  }
   img.src = `image/alphabet/${alphabetArray[0]}.svg`;
 }
 
 // show the next question
 function showNext() {
-  if (!alphabetArray.length) {
-    console.log('game over');
-    return;
-  }
   //remove old letter and show next question
   alphabetArray.shift();
   displayChar();
@@ -37,8 +38,6 @@ function grabInput() {
 
   //send for comparison
   compareAnswer(answer);
-
-  displayChar();
 }
 
 // compare answer
@@ -52,7 +51,12 @@ function compareAnswer(userInput) {
 
 // show result and add to tally
 
-// start button initialiate game start
+//end game
+function endGame() {
+  endGameEl.classList.remove('hidden');
+  gameSection.classList.add('hidden');
+}
+
 // Add event listeners
 startBtn.addEventListener('click', function () {
   this.classList.add('hidden');
