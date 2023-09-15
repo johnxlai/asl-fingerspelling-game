@@ -22,14 +22,26 @@ function displayChar() {
 //Loop thru array, pop item once it has been displayed
 for (let i = 0; i < alphabetArray.length; i++) {
   alphabetArray.shift();
-  console.log(alphabetArray[i]);
 }
 
 // input listen to event for correct or wrong answer
 function grabInput() {
   const answer = userInput.value.toLowerCase();
   userInput.value = '';
+
+  //send for comparison
+  compareAnswer(answer);
 }
+
+// show the next question
+
+// compare answer
+function compareAnswer(userInput) {
+  const message = alphabetArray[0] === userInput ? 'you got it' : 'try again';
+  console.log(message);
+}
+
+// show result and add to tally
 
 // start button initialiate game start
 // Add event listeners
