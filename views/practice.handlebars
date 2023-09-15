@@ -4,7 +4,7 @@
   class="flex flex-col w-11/12 lg:w-10/12 text-white bg-purple-800/[.06] border-purple-600">
   <div class="text-center">
     <h1
-      class="px-4 py-2 bg-purple-300 text-purple-600 inline-block text-3xl font-extrabold before:absolute before:bg-purple-600 relative h1-bg-style -top-[28px]">
+      class="px-4 py-2 bg-purple-300 text-purple-600 inline-block text-2xl md:text-3xl font-extrabold before:absolute before:bg-purple-600 relative h1-bg-style -top-[28px]">
       Practice makes perfect</h1>
   </div>
 
@@ -17,7 +17,7 @@
     <div class="feedback"></div>
     <div class="total-points"></div>
 
-    <div class="game-section">
+    <div class="hidden game-section">
       <div class="flex justify-center overflow-x-scroll md:overflow-hidden">
         <img class="question max-w-[100%] w-[200px]" src="image/alphabet/j.svg" alt="question">
       </div>
@@ -48,14 +48,12 @@
         {{/if}}
       </div>
     </div>
-    <div class="hidden end-game">
+    <div class="hidden end-game mb-3">
       <h2>Good Job!</h2>
       <a class="btn text-neutral-800 bg-green-400 font-['Tilt_Warp'] my-3" href="/start">
         <p>Play the Real Game</p>
       </a>
-      <a class="btn text-neutral-800 bg-pink-400 font-['Tilt_Warp'] my-3" href="/practice">
-        <p>Practice Again</p>
-      </a>
+      <button class="restart btn text-neutral-800 bg-pink-400 font-['Tilt_Warp'] my-3">Practice Again</button>
     </div>
   </div>
 </section>

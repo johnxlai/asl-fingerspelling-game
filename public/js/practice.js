@@ -8,11 +8,16 @@ const userInput = document.querySelector('.user-input');
 const endGameEl = document.querySelector('.end-game');
 const feedback = document.querySelector('.feedback');
 const totalPoints = document.querySelector('.total-points');
+const restartBtn = document.querySelector('.restart');
 let correct = 0,
   wrong = 0;
 
 //Start Game, create alphabet and randomize
 function startGame() {
+  endGameEl.classList.add('hidden');
+  gameSection.classList.remove('hidden');
+  totalPoints.innerHTML = '';
+
   // generate a to z, 26 elements, Starts are Character Code at 65(uppercase A) 97 (lowercase) and give it 0 as index
   alphabetArray = Array.from({ length: 26 }, (_, index) =>
     String.fromCharCode(97 + index)
@@ -20,10 +25,12 @@ function startGame() {
 
   //randomize the array
   alphabetArray.sort((a, b) => 0.5 - Math.random());
-  alphabetArray = ['a', 'b', 'c'];
+
+  //reset points
+  correct = 0;
+  wrong = 0;
 
   displayChar();
-  console.log(alphabetArray);
 }
 
 // display first letter
@@ -54,21 +61,18 @@ function grabInput() {
 
 // compare answer
 function compareAnswer(userInput) {
-  console.log(alphabetArray[0]);
   let result = alphabetArray[0] === userInput;
 
   //Add point
   result ? correct++ : wrong++;
 
   //Show message
-  let message = result ? 'you got it' : 'try again';
+  let message = result ? 'Nice, you got it' : 'Oops, try again';
   feedback.innerHTML = `<p>${message}</p>`;
   totalPoints.innerHTML = `<p>Correct: ${correct}, Wrong: ${wrong}</p>`;
 
   showNext();
 }
-
-// start 30 secs count down
 
 //end game
 function endGame() {
@@ -84,6 +88,8 @@ startBtn.addEventListener('click', function () {
 
   startGame();
 });
+
+restartBtn.addEventListener('click', startGame);
 
 gameForm.addEventListener('submit', (e) => {
   e.preventDefault();
