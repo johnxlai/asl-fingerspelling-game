@@ -7,6 +7,9 @@ const gameForm = document.querySelector('.game-form');
 const userInput = document.querySelector('.user-input');
 const endGameEl = document.querySelector('.end-game');
 const feedback = document.querySelector('.feedback');
+const totalPoints = document.querySelector('.total-points');
+let correct = 0,
+  wrong = 0;
 
 //Start Game, create alphabet and randomize
 function startGame() {
@@ -52,19 +55,26 @@ function grabInput() {
 // compare answer
 function compareAnswer(userInput) {
   console.log(alphabetArray[0]);
-  const message = alphabetArray[0] === userInput ? 'you got it' : 'try again';
+  let result = alphabetArray[0] === userInput;
 
+  //Add point
+  result ? correct++ : wrong++;
+
+  //Show message
+  let message = result ? 'you got it' : 'try again';
   feedback.innerHTML = `<p>${message}</p>`;
+  totalPoints.innerHTML = `<p>Correct: ${correct}, Wrong: ${wrong}</p>`;
 
   showNext();
 }
 
-// show result and add to tally
+// start 30 secs count down
 
 //end game
 function endGame() {
   endGameEl.classList.remove('hidden');
   gameSection.classList.add('hidden');
+  feedback.innerHTML = '';
 }
 
 // Add event listeners
@@ -79,4 +89,3 @@ gameForm.addEventListener('submit', (e) => {
   e.preventDefault();
   grabInput();
 });
-// start 30 secs count down
