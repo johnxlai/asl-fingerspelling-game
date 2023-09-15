@@ -50,6 +50,40 @@ router.get('/start', async (req, res) => {
   }
 });
 
+//Practice
+router.get('/practice', async (req, res) => {
+  try {
+    if (req.session.user) {
+      const userData = await User.findByPk(req.session.user.id, {
+        attributes: {
+          exclude: ['password'],
+          include: [
+            [
+              sequelize.literal(
+                `(SELECT SUM(points) FROM result WHERE result.user_id = user.id )`
+              ),
+              'total_points',
+            ],
+          ],
+        },
+        include: [{ model: Result }],
+      });
+      const user = userData.get({ plain: true });
+
+      res.render('practice', {
+        ...user,
+        loggedIn: req.session.loggedIn,
+        user: req.session.user,
+      });
+      return;
+    }
+    //if user not logged in
+    res.render('practice');
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 //Ranking and highscore page
 router.get('/ranks', async (req, res) => {
   const session = req.session;
