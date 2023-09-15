@@ -576,6 +576,9 @@ video {
 .w-\[200px\] {
   width: 200px;
 }
+.w-\[300px\] {
+  width: 300px;
+}
 .w-\[80px\] {
   width: 80px;
 }
@@ -988,10 +991,6 @@ body {
 
   .md\:ml-0 {
     margin-left: 0px;
-  }
-
-  .md\:grid {
-    display: grid;
   }
 
   .md\:w-10\/12 {

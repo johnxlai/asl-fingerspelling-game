@@ -8,6 +8,8 @@ const questionsFrame = document.getElementById('question-frame');
 const userExistingPts =
   document.querySelector('.user-existing-pts').innerHTML || 0;
 const startGameBtn = document.querySelector('.start-game');
+let letter = document.querySelector('.letter');
+let charPosition = document.querySelector('.char-position');
 
 let gamePoints = 0;
 // Define an object that maps each letter of the alphabet to an image filename
@@ -70,9 +72,11 @@ function displayWord(word) {
   // Loop through the letters array and set the src attribute of each image to the corresponding letter image
   for (let i = 0; i < letters.length; i++) {
     setTimeout(function timer() {
-      const image = document.getElementById('image-' + i);
-      image.src = letterImages[letters[i].toLowerCase()];
-      image.alt = 'letter ' + i;
+      // const image = document.getElementById('image-' + i);
+
+      letter.src = letterImages[letters[i].toLowerCase()];
+      letter.alt = 'letter ' + i;
+      charPosition.innerText = `${i + 1} character`;
     }, i * 2000);
   }
 
