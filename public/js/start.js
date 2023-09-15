@@ -69,14 +69,18 @@ function displayWord(word) {
 
   // Loop through the letters array and set the src attribute of each image to the corresponding letter image
   for (let i = 0; i < letters.length; i++) {
-    const image = document.getElementById('image-' + i);
-    image.src = letterImages[letters[i].toLowerCase()];
-    image.alt = 'letter ' + i;
+    setTimeout(function timer() {
+      const image = document.getElementById('image-' + i);
+      image.src = letterImages[letters[i].toLowerCase()];
+      image.alt = 'letter ' + i;
+    }, i * 2000);
   }
 
   // Update the level display
   // questionNum.textContent = currentWordIndex;
 }
+
+//show character one by one then show none
 
 function startGame() {
   // Display the first word
