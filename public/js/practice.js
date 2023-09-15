@@ -1,11 +1,12 @@
 // generate a to z, 26 elements, Starts are Character Code at 65(uppercase A) 97 (lowercase) and give it 0 as index
-const alphabetArray = Array.from({ length: 26 }, (_, index) =>
+let alphabetArray = Array.from({ length: 26 }, (_, index) =>
   String.fromCharCode(97 + index)
 );
 
 //randomize the array
 alphabetArray.sort((a, b) => 0.5 - Math.random());
 
+alphabetArray = ['a', 'b', 'c'];
 //Selectors
 const startBtn = document.querySelector('.start-practice');
 const gameSection = document.querySelector('.game-section');
@@ -16,12 +17,17 @@ const userInput = document.querySelector('.user-input');
 // display first letter
 function displayChar() {
   img.src = `image/alphabet/${alphabetArray[0]}.svg`;
-  console.log(alphabetArray);
 }
 
-//Loop thru array, pop item once it has been displayed
-for (let i = 0; i < alphabetArray.length; i++) {
+// show the next question
+function showNext() {
+  if (!alphabetArray.length) {
+    console.log('game over');
+    return;
+  }
+  //remove old letter and show next question
   alphabetArray.shift();
+  displayChar();
 }
 
 // input listen to event for correct or wrong answer
@@ -31,14 +37,17 @@ function grabInput() {
 
   //send for comparison
   compareAnswer(answer);
-}
 
-// show the next question
+  displayChar();
+}
 
 // compare answer
 function compareAnswer(userInput) {
+  console.log(alphabetArray[0]);
   const message = alphabetArray[0] === userInput ? 'you got it' : 'try again';
   console.log(message);
+
+  showNext();
 }
 
 // show result and add to tally
@@ -48,7 +57,9 @@ function compareAnswer(userInput) {
 startBtn.addEventListener('click', function () {
   this.classList.add('hidden');
   gameSection.classList.remove('hidden');
+
   displayChar();
+  console.log(alphabetArray);
 });
 
 gameForm.addEventListener('submit', (e) => {
