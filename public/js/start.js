@@ -81,16 +81,12 @@ function displayWord(word) {
     }, i * 2000);
   }
 
-  const showAllChar = document.querySelector('.showAllChar');
-  showAllChar.appendChild(document.createElement('img'));
-  img.src = a;
+  letters.map((l) => {
+    const img = document.createElement('img');
+    img.src = src = `image/alphabet/${l}.svg`;
+    img.classList.add('letter', 'max-w-full', 'w-[120px]');
 
-  //
-  letters.forEach((l) => {
-    console.log(showAllChar);
-    // showAllChar.appendChild(
-    //   `<img class="letter max-w-full w-[120px]" src="image/alphabet/${l}.svg" alt="letter ${l}">`
-    // );
+    document.querySelector('.showAllChar').appendChild(img);
   });
 
   // Update the level display
