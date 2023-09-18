@@ -1,5 +1,6 @@
 //Selectors
 const gameForm = document.getElementById('game-form');
+const mainGame = document.querySelector('.main-game');
 const answerInput = document.getElementById('answer-input');
 const pointsDisplay = document.getElementById('points-display');
 let feedback = document.getElementById('feedback');
@@ -10,6 +11,7 @@ const userExistingPts =
 const startGameBtn = document.querySelector('.start-game');
 let letter = document.querySelector('.letter');
 let charPosition = document.querySelector('.char-position');
+const thankYou4Playing = document.querySelector('.thank-you');
 
 let gamePoints = 0;
 // Define an object that maps each letter of the alphabet to an image filename
@@ -125,6 +127,9 @@ function goToNextQuestion() {
 //end of game
 function endGame() {
   feedback.textContent = `YOUR FINAL SCORE is ${gamePoints}`;
+  mainGame.classList.add('hidden');
+  gameForm.classList.add('hidden');
+  thankYou4Playing.classList.remove('hidden');
   fetchPoint(gamePoints, userExistingPts);
 }
 
