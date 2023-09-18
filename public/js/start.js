@@ -70,23 +70,22 @@ function displayWord(word) {
   const letters = word.split('');
 
   // Loop through the letters array and set the src attribute of each image to the corresponding letter image
-  for (let i = 0; i < letters.length; i++) {
-    //show each char 2 seconds at a time
+
+  letters.map((l, i) => {
+    const showAllChar = document.querySelector('.showAllChar');
+    //display each letter for 2 secs
     setTimeout(function timer() {
-      // const image = document.getElementById('image-' + i);
-
-      letter.src = letterImages[letters[i].toLowerCase()];
-      letter.alt = 'letter ' + i;
+      letter.src = letterImages[l.toLowerCase()];
+      letter.alt = 'letter ' + l;
       charPosition.innerText = `${i + 1} character`;
+      showAllChar.classList.remove('hidden');
     }, i * 2000);
-  }
 
-  letters.map((l) => {
+    //show all four images
     const img = document.createElement('img');
     img.src = src = `image/alphabet/${l}.svg`;
     img.classList.add('letter', 'max-w-full', 'w-[120px]');
-
-    document.querySelector('.showAllChar').appendChild(img);
+    showAllChar.appendChild(img);
   });
 
   // Update the level display
