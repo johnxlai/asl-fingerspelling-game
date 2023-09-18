@@ -71,7 +71,6 @@ function displayWord(word) {
   const lastEl = letters[letters.length - 1];
 
   // Loop through the letters array and set the src attribute of each image to the corresponding letter image
-
   letters.map((l, i) => {
     const showAllChar = document.querySelector('.showAllChar');
 
@@ -79,10 +78,18 @@ function displayWord(word) {
     setTimeout(function timer() {
       letter.src = letterImages[l.toLowerCase()];
       letter.alt = 'letter ' + l;
-      charPosition.innerText = `${i + 1} character`;
+      charPosition.innerText = `- ${i + 1} character`;
 
-      //Show the whole word after the last character is shown
-      if (l === lastEl) [showAllChar.classList.remove('hidden')];
+      //Show the whole word after the last character is shown after 2 secs
+      if (l === lastEl) {
+        setTimeout(() => {
+          //hide last character and clear number of character text
+          letter.classList.add('hidden');
+          charPosition.innerText = '';
+          //show all character
+          showAllChar.classList.remove('hidden');
+        }, 2000);
+      }
     }, i * 2000);
 
     //show all four images
