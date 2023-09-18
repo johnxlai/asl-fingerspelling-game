@@ -46,14 +46,14 @@ const letterImages = {
 const words = [
   { word: 'Fish', level: 1 },
   { word: 'love', level: 1 },
-  { word: 'joke', level: 2 },
-  { word: 'feel', level: 3 },
-  { word: 'Cook', level: 4 },
-  { word: 'baby', level: 5 },
-  { word: 'bear', level: 5 },
-  { word: 'play', level: 5 },
-  { word: 'sing', level: 5 },
-  { word: 'moon', level: 5 },
+  // { word: 'joke', level: 2 },
+  // { word: 'feel', level: 3 },
+  // { word: 'Cook', level: 4 },
+  // { word: 'baby', level: 5 },
+  // { word: 'bear', level: 5 },
+  // { word: 'play', level: 5 },
+  // { word: 'sing', level: 5 },
+  // { word: 'moon', level: 5 },
 ];
 
 // Define a variable to keep track of the current word index
@@ -72,7 +72,7 @@ function displayWord(word) {
 
   // Loop through the letters array and set the src attribute of each image to the corresponding letter image
   letters.map((l, i) => {
-    const showAllChar = document.querySelector('.showAllChar');
+    // const showAllChar = document.querySelector('.showAllChar');
 
     //display each letter for 2 secs
     setTimeout(function timer() {
@@ -81,22 +81,22 @@ function displayWord(word) {
       charPosition.innerText = `- ${i + 1} character`;
 
       //Show the whole word after the last character is shown after 2 secs
-      if (l === lastEl) {
-        setTimeout(() => {
-          //hide last character and clear number of character text
-          letter.classList.add('hidden');
-          charPosition.innerText = '';
-          //show all character
-          showAllChar.classList.remove('hidden');
-        }, 2000);
-      }
+      // if (l === lastEl) {
+      //   setTimeout(() => {
+      //     //hide last character and clear number of character text
+      //     letter.classList.add('hidden');
+      //     charPosition.innerText = '';
+      //     //show all character
+      //     showAllChar.classList.remove('hidden');
+      //   }, 2000);
+      // }
     }, i * 2000);
 
     //show all four images
-    const img = document.createElement('img');
-    img.src = src = `image/alphabet/${l}.svg`;
-    img.classList.add('letter', 'max-w-full', 'w-[120px]');
-    showAllChar.appendChild(img);
+    // const img = document.createElement('img');
+    // img.src = src = `image/alphabet/${l}.svg`;
+    // img.classList.add('letter', 'max-w-full', 'w-[120px]');
+    // showAllChar.appendChild(img);
   });
 
   // Update the level display
