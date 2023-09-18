@@ -171,7 +171,8 @@ async function fetchPoint(points, total_points) {
       'User does not exist! Try to use other username or password';
   }
   if (response.ok) {
-    document.location.replace('/profile');
+    console.log('user info logged');
+    // document.location.replace('/profile');
   } else {
     alert(response.statusText);
   }
