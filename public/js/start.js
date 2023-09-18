@@ -68,17 +68,21 @@ function shuffleArr(arr) {
 function displayWord(word) {
   // Split the word into an array of letters
   const letters = word.split('');
+  const lastEl = letters[letters.length - 1];
 
   // Loop through the letters array and set the src attribute of each image to the corresponding letter image
 
   letters.map((l, i) => {
     const showAllChar = document.querySelector('.showAllChar');
+
     //display each letter for 2 secs
     setTimeout(function timer() {
       letter.src = letterImages[l.toLowerCase()];
       letter.alt = 'letter ' + l;
       charPosition.innerText = `${i + 1} character`;
-      showAllChar.classList.remove('hidden');
+
+      //Show the whole word after the last character is shown
+      if (l === lastEl) [showAllChar.classList.remove('hidden')];
     }, i * 2000);
 
     //show all four images
