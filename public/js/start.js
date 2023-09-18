@@ -48,14 +48,14 @@ const letterImages = {
 const words = [
   { word: 'Fish', level: 1 },
   { word: 'love', level: 1 },
-  // { word: 'joke', level: 2 },
-  // { word: 'feel', level: 3 },
-  // { word: 'Cook', level: 4 },
-  // { word: 'baby', level: 5 },
-  // { word: 'bear', level: 5 },
-  // { word: 'play', level: 5 },
-  // { word: 'sing', level: 5 },
-  // { word: 'moon', level: 5 },
+  { word: 'joke', level: 2 },
+  { word: 'feel', level: 3 },
+  { word: 'Cook', level: 4 },
+  { word: 'baby', level: 5 },
+  { word: 'bear', level: 5 },
+  { word: 'play', level: 5 },
+  { word: 'sing', level: 5 },
+  { word: 'moon', level: 5 },
 ];
 
 // Define a variable to keep track of the current word index
