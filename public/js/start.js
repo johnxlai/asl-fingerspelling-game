@@ -71,6 +71,7 @@ function displayWord(word) {
 
   // Loop through the letters array and set the src attribute of each image to the corresponding letter image
   for (let i = 0; i < letters.length; i++) {
+    //show each char 2 seconds at a time
     setTimeout(function timer() {
       // const image = document.getElementById('image-' + i);
 
@@ -79,6 +80,18 @@ function displayWord(word) {
       charPosition.innerText = `${i + 1} character`;
     }, i * 2000);
   }
+
+  const showAllChar = document.querySelector('.showAllChar');
+  showAllChar.appendChild(document.createElement('img'));
+  img.src = a;
+
+  //
+  letters.forEach((l) => {
+    console.log(showAllChar);
+    // showAllChar.appendChild(
+    //   `<img class="letter max-w-full w-[120px]" src="image/alphabet/${l}.svg" alt="letter ${l}">`
+    // );
+  });
 
   // Update the level display
   // questionNum.textContent = currentWordIndex;
