@@ -1,5 +1,6 @@
 //Selectors
 const gameForm = document.getElementById('game-form');
+const mainGame = document.querySelector('.main-game');
 const answerInput = document.getElementById('answer-input');
 const pointsDisplay = document.getElementById('points-display');
 let feedback = document.getElementById('feedback');
@@ -8,6 +9,9 @@ const questionsFrame = document.getElementById('question-frame');
 const userExistingPts =
   document.querySelector('.user-existing-pts').innerHTML || 0;
 const startGameBtn = document.querySelector('.start-game');
+let letter = document.querySelector('.letter');
+let charPosition = document.querySelector('.char-position');
+const thankYou4Playing = document.querySelector('.thank-you');
 
 let gamePoints = 0;
 // Define an object that maps each letter of the alphabet to an image filename
@@ -44,14 +48,14 @@ const letterImages = {
 const words = [
   { word: 'Fish', level: 1 },
   { word: 'love', level: 1 },
-  { word: 'joke', level: 2 },
-  { word: 'feel', level: 3 },
-  { word: 'Cook', level: 4 },
-  { word: 'baby', level: 5 },
-  { word: 'bear', level: 5 },
-  { word: 'play', level: 5 },
-  { word: 'sing', level: 5 },
-  { word: 'moon', level: 5 },
+  // { word: 'joke', level: 2 },
+  // { word: 'feel', level: 3 },
+  // { word: 'Cook', level: 4 },
+  // { word: 'baby', level: 5 },
+  // { word: 'bear', level: 5 },
+  // { word: 'play', level: 5 },
+  // { word: 'sing', level: 5 },
+  // { word: 'moon', level: 5 },
 ];
 
 // Define a variable to keep track of the current word index
@@ -66,17 +70,42 @@ function shuffleArr(arr) {
 function displayWord(word) {
   // Split the word into an array of letters
   const letters = word.split('');
+  const lastEl = letters[letters.length - 1];
 
   // Loop through the letters array and set the src attribute of each image to the corresponding letter image
-  for (let i = 0; i < letters.length; i++) {
-    const image = document.getElementById('image-' + i);
-    image.src = letterImages[letters[i].toLowerCase()];
-    image.alt = 'letter ' + i;
-  }
+  letters.map((l, i) => {
+    // const showAllChar = document.querySelector('.showAllChar');
+
+    //display each letter for 2 secs
+    setTimeout(function timer() {
+      letter.src = letterImages[l.toLowerCase()];
+      letter.alt = 'letter ' + l;
+      charPosition.innerText = `- ${i + 1} character`;
+
+      //Show the whole word after the last character is shown after 2 secs
+      // if (l === lastEl) {
+      //   setTimeout(() => {
+      //     //hide last character and clear number of character text
+      //     letter.classList.add('hidden');
+      //     charPosition.innerText = '';
+      //     //show all character
+      //     showAllChar.classList.remove('hidden');
+      //   }, 2000);
+      // }
+    }, i * 2000);
+
+    //show all four images
+    // const img = document.createElement('img');
+    // img.src = src = `image/alphabet/${l}.svg`;
+    // img.classList.add('letter', 'max-w-full', 'w-[120px]');
+    // showAllChar.appendChild(img);
+  });
 
   // Update the level display
   // questionNum.textContent = currentWordIndex;
 }
+
+//show character one by one then show none
 
 function startGame() {
   // Display the first word
@@ -98,6 +127,9 @@ function goToNextQuestion() {
 //end of game
 function endGame() {
   feedback.textContent = `YOUR FINAL SCORE is ${gamePoints}`;
+  mainGame.classList.add('hidden');
+  gameForm.classList.add('hidden');
+  thankYou4Playing.classList.remove('hidden');
   fetchPoint(gamePoints, userExistingPts);
 }
 
@@ -144,7 +176,8 @@ async function fetchPoint(points, total_points) {
       'User does not exist! Try to use other username or password';
   }
   if (response.ok) {
-    document.location.replace('/profile');
+    console.log('user info logged');
+    // document.location.replace('/profile');
   } else {
     alert(response.statusText);
   }
